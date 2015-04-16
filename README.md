@@ -1,0 +1,1 @@
+2-channel USBscope made of ATtiny85 MCU
