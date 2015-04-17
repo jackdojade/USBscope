@@ -1,10 +1,10 @@
 2-channel USBscope made of ATtiny45/85 MCU
---
-Author: http://yveslebrac.blogspot.com/2008/10/cheapest-dual-trace-scope-in-galaxy.html
---
-USBscope v4: http://lugascan.com.ua/
---
-RU FAQ: https://github.com/VictorGrig/USBscope/blob/master/USBscope%20v4%20FAQ%20(russian)
----
-EN FAQ: https://github.com/VictorGrig/USBscope/blob/master/USBscope%20v4%20FAQ%20(english)
----
+
+Original project: [Yves Lebrac](http://yveslebrac.blogspot.com/2008/10/cheapest-dual-trace-scope-in-galaxy.html)
+USBscope v4: [http://lugascan.com.ua/](http://lugascan.com.ua/)
+
+You can find there:
+- AD 14.3 PCB project
+- SL 6 PCB project
+- C source code for AVR MCU
+- C# source code for desktop application
