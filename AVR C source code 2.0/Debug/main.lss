@@ -3,29 +3,29 @@ main.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000088c  00000000  00000000  00000094  2**1
+  0 .text         0000088e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  0000088c  00000920  2**0
+  1 .data         00000002  00800060  0000088e  00000922  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000044  00800062  00800062  00000922  2**0
+  2 .bss          00000044  00800062  00800062  00000924  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000922  2**0
+  3 .comment      00000030  00000000  00000000  00000924  2**0
                   CONTENTS, READONLY
   4 .debug_aranges 00000088  00000000  00000000  00000958  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000f7a  00000000  00000000  000009e0  2**0
+  5 .debug_info   00000f7d  00000000  00000000  000009e0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000627  00000000  00000000  0000195a  2**0
+  6 .debug_abbrev 00000627  00000000  00000000  0000195d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000005de  00000000  00000000  00001f81  2**0
+  7 .debug_line   000005de  00000000  00000000  00001f84  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000d0  00000000  00000000  00002560  2**2
+  8 .debug_frame  000000d0  00000000  00000000  00002564  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000005e8  00000000  00000000  00002630  2**0
+  9 .debug_str    000005e8  00000000  00000000  00002634  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000e23  00000000  00000000  00002c18  2**0
+ 10 .debug_loc    00000e13  00000000  00000000  00002c1c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000140  00000000  00000000  00003a3b  2**0
+ 11 .debug_ranges 00000140  00000000  00000000  00003a2f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -103,7 +103,7 @@ Disassembly of section .text:
   c0:	10 e0       	ldi	r17, 0x00	; 0
   c2:	a0 e6       	ldi	r26, 0x60	; 96
   c4:	b0 e0       	ldi	r27, 0x00	; 0
-  c6:	ec e8       	ldi	r30, 0x8C	; 140
+  c6:	ee e8       	ldi	r30, 0x8E	; 142
   c8:	f8 e0       	ldi	r31, 0x08	; 8
   ca:	02 c0       	rjmp	.+4      	; 0xd0 <__do_copy_data+0x10>
   cc:	05 90       	lpm	r0, Z+
@@ -125,8 +125,8 @@ Disassembly of section .text:
   e0:	a6 3a       	cpi	r26, 0xA6	; 166
   e2:	b2 07       	cpc	r27, r18
   e4:	e1 f7       	brne	.-8      	; 0xde <.do_clear_bss_loop>
-  e6:	ef d1       	rcall	.+990    	; 0x4c6 <main>
-  e8:	cf c3       	rjmp	.+1950   	; 0x888 <_exit>
+  e6:	f0 d1       	rcall	.+992    	; 0x4c8 <main>
+  e8:	d0 c3       	rjmp	.+1952   	; 0x88a <_exit>
 
 000000ea <__bad_interrupt>:
   ea:	8a cf       	rjmp	.-236    	; 0x0 <__vectors>
@@ -1225,1068 +1225,1069 @@ int         x, optimumDev, targetValue = (unsigned)(1499 * (double)F_CPU / 10.5e
  44e:	67 de       	rcall	.-818    	; 0x11e <usbMeasureFrameLength>
  450:	ec 01       	movw	r28, r24
         if(x < targetValue)             /* frequency still too low */
- 452:	8f 38       	cpi	r24, 0x8F	; 143
- 454:	91 05       	cpc	r25, r1
- 456:	0c f4       	brge	.+2      	; 0x45a <usbEventResetReady+0x2c>
+ 452:	c1 3b       	cpi	r28, 0xB1	; 177
+ 454:	86 e0       	ldi	r24, 0x06	; 6
+ 456:	d8 07       	cpc	r29, r24
+ 458:	0c f4       	brge	.+2      	; 0x45c <usbEventResetReady+0x2e>
             trialValue += step;
- 458:	ed 2c       	mov	r14, r13
+ 45a:	ed 2c       	mov	r14, r13
         step >>= 1;
- 45a:	f6 94       	lsr	r15
- 45c:	01 50       	subi	r16, 0x01	; 1
- 45e:	11 09       	sbc	r17, r1
+ 45c:	f6 94       	lsr	r15
+ 45e:	01 50       	subi	r16, 0x01	; 1
+ 460:	11 09       	sbc	r17, r1
     }while(step > 0);
- 460:	01 15       	cp	r16, r1
- 462:	11 05       	cpc	r17, r1
- 464:	89 f7       	brne	.-30     	; 0x448 <usbEventResetReady+0x1a>
+ 462:	01 15       	cp	r16, r1
+ 464:	11 05       	cpc	r17, r1
+ 466:	81 f7       	brne	.-32     	; 0x448 <usbEventResetReady+0x1a>
     /* We have a precision of +/- 1 for optimum OSCCAL here */
     /* now do a neighborhood search for optimum value */
     optimumValue = trialValue;
     optimumDev = x; /* this is certainly far away from optimum */
     for(OSCCAL = trialValue - 1; OSCCAL <= trialValue + 1; OSCCAL++){
- 466:	8f ef       	ldi	r24, 0xFF	; 255
- 468:	8e 0d       	add	r24, r14
- 46a:	81 bf       	out	0x31, r24	; 49
- 46c:	81 b7       	in	r24, 0x31	; 49
- 46e:	0e 2d       	mov	r16, r14
- 470:	10 e0       	ldi	r17, 0x00	; 0
- 472:	0f 5f       	subi	r16, 0xFF	; 255
- 474:	1f 4f       	sbci	r17, 0xFF	; 255
- 476:	90 e0       	ldi	r25, 0x00	; 0
- 478:	08 17       	cp	r16, r24
- 47a:	19 07       	cpc	r17, r25
- 47c:	bc f0       	brlt	.+46     	; 0x4ac <usbEventResetReady+0x7e>
+ 468:	8f ef       	ldi	r24, 0xFF	; 255
+ 46a:	8e 0d       	add	r24, r14
+ 46c:	81 bf       	out	0x31, r24	; 49
+ 46e:	81 b7       	in	r24, 0x31	; 49
+ 470:	0e 2d       	mov	r16, r14
+ 472:	10 e0       	ldi	r17, 0x00	; 0
+ 474:	0f 5f       	subi	r16, 0xFF	; 255
+ 476:	1f 4f       	sbci	r17, 0xFF	; 255
+ 478:	90 e0       	ldi	r25, 0x00	; 0
+ 47a:	08 17       	cp	r16, r24
+ 47c:	19 07       	cpc	r17, r25
+ 47e:	bc f0       	brlt	.+46     	; 0x4ae <usbEventResetReady+0x80>
         x = usbMeasureFrameLength() - targetValue;
- 47e:	4f de       	rcall	.-866    	; 0x11e <usbMeasureFrameLength>
- 480:	8f 58       	subi	r24, 0x8F	; 143
- 482:	91 09       	sbc	r25, r1
- 484:	9c 01       	movw	r18, r24
- 486:	99 23       	and	r25, r25
- 488:	24 f4       	brge	.+8      	; 0x492 <usbEventResetReady+0x64>
- 48a:	22 27       	eor	r18, r18
- 48c:	33 27       	eor	r19, r19
- 48e:	28 1b       	sub	r18, r24
- 490:	39 0b       	sbc	r19, r25
+ 480:	4e de       	rcall	.-868    	; 0x11e <usbMeasureFrameLength>
+ 482:	81 5b       	subi	r24, 0xB1	; 177
+ 484:	96 40       	sbci	r25, 0x06	; 6
+ 486:	9c 01       	movw	r18, r24
+ 488:	99 23       	and	r25, r25
+ 48a:	24 f4       	brge	.+8      	; 0x494 <usbEventResetReady+0x66>
+ 48c:	22 27       	eor	r18, r18
+ 48e:	33 27       	eor	r19, r19
+ 490:	28 1b       	sub	r18, r24
+ 492:	39 0b       	sbc	r19, r25
         if(x < 0)
             x = -x;
         if(x < optimumDev){
- 492:	2c 17       	cp	r18, r28
- 494:	3d 07       	cpc	r19, r29
- 496:	14 f4       	brge	.+4      	; 0x49c <usbEventResetReady+0x6e>
+ 494:	2c 17       	cp	r18, r28
+ 496:	3d 07       	cpc	r19, r29
+ 498:	14 f4       	brge	.+4      	; 0x49e <usbEventResetReady+0x70>
             optimumDev = x;
             optimumValue = OSCCAL;
- 498:	e1 b6       	in	r14, 0x31	; 49
+ 49a:	e1 b6       	in	r14, 0x31	; 49
     for(OSCCAL = trialValue - 1; OSCCAL <= trialValue + 1; OSCCAL++){
         x = usbMeasureFrameLength() - targetValue;
         if(x < 0)
             x = -x;
         if(x < optimumDev){
             optimumDev = x;
- 49a:	e9 01       	movw	r28, r18
+ 49c:	e9 01       	movw	r28, r18
     }while(step > 0);
     /* We have a precision of +/- 1 for optimum OSCCAL here */
     /* now do a neighborhood search for optimum value */
     optimumValue = trialValue;
     optimumDev = x; /* this is certainly far away from optimum */
     for(OSCCAL = trialValue - 1; OSCCAL <= trialValue + 1; OSCCAL++){
- 49c:	81 b7       	in	r24, 0x31	; 49
- 49e:	8f 5f       	subi	r24, 0xFF	; 255
- 4a0:	81 bf       	out	0x31, r24	; 49
- 4a2:	81 b7       	in	r24, 0x31	; 49
- 4a4:	90 e0       	ldi	r25, 0x00	; 0
- 4a6:	08 17       	cp	r16, r24
- 4a8:	19 07       	cpc	r17, r25
- 4aa:	4c f7       	brge	.-46     	; 0x47e <usbEventResetReady+0x50>
+ 49e:	81 b7       	in	r24, 0x31	; 49
+ 4a0:	8f 5f       	subi	r24, 0xFF	; 255
+ 4a2:	81 bf       	out	0x31, r24	; 49
+ 4a4:	81 b7       	in	r24, 0x31	; 49
+ 4a6:	90 e0       	ldi	r25, 0x00	; 0
+ 4a8:	08 17       	cp	r16, r24
+ 4aa:	19 07       	cpc	r17, r25
+ 4ac:	4c f7       	brge	.-46     	; 0x480 <usbEventResetReady+0x52>
         if(x < optimumDev){
             optimumDev = x;
             optimumValue = OSCCAL;
         }
     }
     OSCCAL = optimumValue;
- 4ac:	e1 be       	out	0x31, r14	; 49
+ 4ae:	e1 be       	out	0x31, r14	; 49
 */
 
 void    usbEventResetReady(void)
 {
     calibrateOscillator();
     eeprom_write_byte(0, OSCCAL);   /* store the calibrated value in EEPROM */
- 4ae:	61 b7       	in	r22, 0x31	; 49
- 4b0:	80 e0       	ldi	r24, 0x00	; 0
- 4b2:	90 e0       	ldi	r25, 0x00	; 0
- 4b4:	db d1       	rcall	.+950    	; 0x86c <__eewr_byte_tn85>
+ 4b0:	61 b7       	in	r22, 0x31	; 49
+ 4b2:	80 e0       	ldi	r24, 0x00	; 0
+ 4b4:	90 e0       	ldi	r25, 0x00	; 0
+ 4b6:	db d1       	rcall	.+950    	; 0x86e <__eewr_byte_tn85>
 }
- 4b6:	df 91       	pop	r29
- 4b8:	cf 91       	pop	r28
- 4ba:	1f 91       	pop	r17
- 4bc:	0f 91       	pop	r16
- 4be:	ff 90       	pop	r15
- 4c0:	ef 90       	pop	r14
- 4c2:	df 90       	pop	r13
- 4c4:	08 95       	ret
+ 4b8:	df 91       	pop	r29
+ 4ba:	cf 91       	pop	r28
+ 4bc:	1f 91       	pop	r17
+ 4be:	0f 91       	pop	r16
+ 4c0:	ff 90       	pop	r15
+ 4c2:	ef 90       	pop	r14
+ 4c4:	df 90       	pop	r13
+ 4c6:	08 95       	ret
 
-000004c6 <main>:
+000004c8 <main>:
 int main(void)
 {
 uchar   i;
 uchar   calibrationValue;
 
     calibrationValue = eeprom_read_byte(0); /* calibration value from last time */
- 4c6:	80 e0       	ldi	r24, 0x00	; 0
- 4c8:	90 e0       	ldi	r25, 0x00	; 0
- 4ca:	c8 d1       	rcall	.+912    	; 0x85c <__eerd_byte_tn85>
+ 4c8:	80 e0       	ldi	r24, 0x00	; 0
+ 4ca:	90 e0       	ldi	r25, 0x00	; 0
+ 4cc:	c8 d1       	rcall	.+912    	; 0x85e <__eerd_byte_tn85>
     if(calibrationValue != 0xff){
- 4cc:	8f 3f       	cpi	r24, 0xFF	; 255
- 4ce:	09 f0       	breq	.+2      	; 0x4d2 <main+0xc>
+ 4ce:	8f 3f       	cpi	r24, 0xFF	; 255
+ 4d0:	09 f0       	breq	.+2      	; 0x4d4 <main+0xc>
         OSCCAL = calibrationValue;
- 4d0:	81 bf       	out	0x31, r24	; 49
+ 4d2:	81 bf       	out	0x31, r24	; 49
     }
     odDebugInit();
     usbDeviceDisconnect();
- 4d2:	b8 9a       	sbi	0x17, 0	; 23
- 4d4:	84 e1       	ldi	r24, 0x14	; 20
+ 4d4:	b8 9a       	sbi	0x17, 0	; 23
+ 4d6:	84 e1       	ldi	r24, 0x14	; 20
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 4d6:	e5 ea       	ldi	r30, 0xA5	; 165
- 4d8:	fe e0       	ldi	r31, 0x0E	; 14
- 4da:	31 97       	sbiw	r30, 0x01	; 1
- 4dc:	f1 f7       	brne	.-4      	; 0x4da <main+0x14>
- 4de:	00 c0       	rjmp	.+0      	; 0x4e0 <main+0x1a>
- 4e0:	00 00       	nop
- 4e2:	81 50       	subi	r24, 0x01	; 1
+ 4d8:	e7 ec       	ldi	r30, 0xC7	; 199
+ 4da:	ff ea       	ldi	r31, 0xAF	; 175
+ 4dc:	31 97       	sbiw	r30, 0x01	; 1
+ 4de:	f1 f7       	brne	.-4      	; 0x4dc <main+0x14>
+ 4e0:	00 c0       	rjmp	.+0      	; 0x4e2 <main+0x1a>
+ 4e2:	00 00       	nop
+ 4e4:	81 50       	subi	r24, 0x01	; 1
     for(i=0;i<20;i++){  /* 300 ms disconnect */
- 4e4:	c1 f7       	brne	.-16     	; 0x4d6 <main+0x10>
+ 4e6:	c1 f7       	brne	.-16     	; 0x4d8 <main+0x10>
         _delay_ms(15);
     }
     usbDeviceConnect();
- 4e6:	b8 98       	cbi	0x17, 0	; 23
+ 4e8:	b8 98       	cbi	0x17, 0	; 23
     DDRB |= 1 << BIT_LED;   /* output for LED */
- 4e8:	b9 9a       	sbi	0x17, 1	; 23
+ 4ea:	b9 9a       	sbi	0x17, 1	; 23
     //PORTB |= 1 << BIT_KEY;  /* pull-up on key input */
     wdt_enable(WDTO_1S);
- 4ea:	2e e0       	ldi	r18, 0x0E	; 14
- 4ec:	88 e1       	ldi	r24, 0x18	; 24
- 4ee:	90 e0       	ldi	r25, 0x00	; 0
- 4f0:	0f b6       	in	r0, 0x3f	; 63
- 4f2:	f8 94       	cli
- 4f4:	a8 95       	wdr
- 4f6:	81 bd       	out	0x21, r24	; 33
- 4f8:	0f be       	out	0x3f, r0	; 63
- 4fa:	21 bd       	out	0x21, r18	; 33
+ 4ec:	2e e0       	ldi	r18, 0x0E	; 14
+ 4ee:	88 e1       	ldi	r24, 0x18	; 24
+ 4f0:	90 e0       	ldi	r25, 0x00	; 0
+ 4f2:	0f b6       	in	r0, 0x3f	; 63
+ 4f4:	f8 94       	cli
+ 4f6:	a8 95       	wdr
+ 4f8:	81 bd       	out	0x21, r24	; 33
+ 4fa:	0f be       	out	0x3f, r0	; 63
+ 4fc:	21 bd       	out	0x21, r18	; 33
     TCCR1 = 0x0b;           /* select clock: 16.5M/1k -> overflow rate = 16.5M/256k = 62.94 Hz */
 }
 
 static void adcInit(void)
 {
     ADMUX = UTIL_BIN8(1001, 0011);  /* Vref=2.56V, measure ADC0-  REFS1 REFS0 ADLAR REFS2 , MUX3 MUX2 MUX1 MUX0 -> ADC2=0010, ADC3=0011, ADC2-ADC3=0110, (ADC2-ADC3)*20=0111*/
- 4fc:	83 e9       	ldi	r24, 0x93	; 147
- 4fe:	87 b9       	out	0x07, r24	; 7
+ 4fe:	83 e9       	ldi	r24, 0x93	; 147
+ 500:	87 b9       	out	0x07, r24	; 7
     ADCSRA = UTIL_BIN8(1000, 0111); /* enable ADC, not free running, interrupt disable, rate = 1/128 = 129khz*/
- 500:	87 e8       	ldi	r24, 0x87	; 135
- 502:	86 b9       	out	0x06, r24	; 6
+ 502:	87 e8       	ldi	r24, 0x87	; 135
+ 504:	86 b9       	out	0x06, r24	; 6
     DDRB |= 1 << BIT_LED;   /* output for LED */
     //PORTB |= 1 << BIT_KEY;  /* pull-up on key input */
     wdt_enable(WDTO_1S);
     //timerInit();
     adcInit();
     usbInit();
- 504:	9e d1       	rcall	.+828    	; 0x842 <usbInit>
+ 506:	9e d1       	rcall	.+828    	; 0x844 <usbInit>
     sei();
- 506:	78 94       	sei
+ 508:	78 94       	sei
 
 /* ------------------------------------------------------------------------- */
 
 static void setIsRecording(uchar newValue)
 {
     isRecording = newValue;
- 508:	81 e0       	ldi	r24, 0x01	; 1
- 50a:	80 93 67 00 	sts	0x0067, r24
+ 50a:	81 e0       	ldi	r24, 0x01	; 1
+ 50c:	80 93 67 00 	sts	0x0067, r24
     if(isRecording){
         PORTB &= ~(1 << BIT_LED);      /* LED on */
- 50e:	c1 98       	cbi	0x18, 1	; 24
+ 510:	c1 98       	cbi	0x18, 1	; 24
     sei();
 	setIsRecording(1);
     for(;;){    /* main event loop */
         wdt_reset();
         usbPoll();
         if(usbInterruptIsReady() ){ /* we can send a report */
- 510:	cb e7       	ldi	r28, 0x7B	; 123
- 512:	d0 e0       	ldi	r29, 0x00	; 0
+ 512:	cb e7       	ldi	r28, 0x7B	; 123
+ 514:	d0 e0       	ldi	r29, 0x00	; 0
 			adcval1 = value + value + (value >> 1);  /*  value * 2.5 for output in mV */
 			ADMUX = UTIL_BIN8(1001, 0011);
 			}
 		else{
 			adcval2 = value + value + (value >> 1);
 			ADMUX = UTIL_BIN8(1001, 0010);
- 514:	0f 2e       	mov	r0, r31
- 516:	f2 e9       	ldi	r31, 0x92	; 146
- 518:	ef 2e       	mov	r14, r31
- 51a:	f0 2d       	mov	r31, r0
+ 516:	0f 2e       	mov	r0, r31
+ 518:	f2 e9       	ldi	r31, 0x92	; 146
+ 51a:	ef 2e       	mov	r14, r31
+ 51c:	f0 2d       	mov	r31, r0
     if( !(ADCSRA & (1 << ADSC))){ 		//adcPending &&
        // adcPending = 0;
         value=ADC;
 		if(adchanel){
 			adcval1 = value + value + (value >> 1);  /*  value * 2.5 for output in mV */
 			ADMUX = UTIL_BIN8(1001, 0011);
- 51c:	0f 2e       	mov	r0, r31
- 51e:	f3 e9       	ldi	r31, 0x93	; 147
- 520:	ff 2e       	mov	r15, r31
- 522:	f0 2d       	mov	r31, r0
+ 51e:	0f 2e       	mov	r0, r31
+ 520:	f3 e9       	ldi	r31, 0x93	; 147
+ 522:	ff 2e       	mov	r15, r31
+ 524:	f0 2d       	mov	r31, r0
 			}
 		else{
 			adcval2 = value + value + (value >> 1);
 			ADMUX = UTIL_BIN8(1001, 0010);
 		}
 		adchanel=!adchanel;
- 524:	11 e0       	ldi	r17, 0x01	; 1
- 526:	00 e0       	ldi	r16, 0x00	; 0
+ 526:	11 e0       	ldi	r17, 0x01	; 1
+ 528:	00 e0       	ldi	r16, 0x00	; 0
     adcInit();
     usbInit();
     sei();
 	setIsRecording(1);
     for(;;){    /* main event loop */
         wdt_reset();
- 528:	a8 95       	wdr
+ 52a:	a8 95       	wdr
         usbPoll();
- 52a:	54 d0       	rcall	.+168    	; 0x5d4 <usbPoll>
+ 52c:	54 d0       	rcall	.+168    	; 0x5d6 <usbPoll>
         if(usbInterruptIsReady() ){ /* we can send a report */
- 52c:	88 81       	ld	r24, Y
- 52e:	84 ff       	sbrs	r24, 4
- 530:	05 c0       	rjmp	.+10     	; 0x53c <main+0x76>
+ 52e:	88 81       	ld	r24, Y
+ 530:	84 ff       	sbrs	r24, 4
+ 532:	05 c0       	rjmp	.+10     	; 0x53e <main+0x76>
             buildReport();
- 532:	42 df       	rcall	.-380    	; 0x3b8 <buildReport>
+ 534:	41 df       	rcall	.-382    	; 0x3b8 <buildReport>
             usbSetInterrupt(reportBuffer, sizeof(reportBuffer));
- 534:	65 e0       	ldi	r22, 0x05	; 5
- 536:	89 e6       	ldi	r24, 0x69	; 105
- 538:	90 e0       	ldi	r25, 0x00	; 0
- 53a:	2a d0       	rcall	.+84     	; 0x590 <usbSetInterrupt>
+ 536:	65 e0       	ldi	r22, 0x05	; 5
+ 538:	89 e6       	ldi	r24, 0x69	; 105
+ 53a:	90 e0       	ldi	r25, 0x00	; 0
+ 53c:	2a d0       	rcall	.+84     	; 0x592 <usbSetInterrupt>
 
 /* ------------------------------------------------------------------------- */
 
 static void adcPoll(void)
 {int value;
     if( !(ADCSRA & (1 << ADSC))){ 		//adcPending &&
- 53c:	36 99       	sbic	0x06, 6	; 6
- 53e:	f4 cf       	rjmp	.-24     	; 0x528 <main+0x62>
+ 53e:	36 99       	sbic	0x06, 6	; 6
+ 540:	f4 cf       	rjmp	.-24     	; 0x52a <main+0x62>
        // adcPending = 0;
         value=ADC;
- 540:	84 b1       	in	r24, 0x04	; 4
- 542:	95 b1       	in	r25, 0x05	; 5
+ 542:	84 b1       	in	r24, 0x04	; 4
+ 544:	95 b1       	in	r25, 0x05	; 5
 		if(adchanel){
- 544:	20 91 66 00 	lds	r18, 0x0066
- 548:	22 23       	and	r18, r18
- 54a:	69 f0       	breq	.+26     	; 0x566 <main+0xa0>
+ 546:	20 91 66 00 	lds	r18, 0x0066
+ 54a:	22 23       	and	r18, r18
+ 54c:	69 f0       	breq	.+26     	; 0x568 <main+0xa0>
 			adcval1 = value + value + (value >> 1);  /*  value * 2.5 for output in mV */
- 54c:	9c 01       	movw	r18, r24
- 54e:	22 0f       	add	r18, r18
- 550:	33 1f       	adc	r19, r19
- 552:	95 95       	asr	r25
- 554:	87 95       	ror	r24
- 556:	82 0f       	add	r24, r18
- 558:	93 1f       	adc	r25, r19
- 55a:	90 93 65 00 	sts	0x0065, r25
- 55e:	80 93 64 00 	sts	0x0064, r24
+ 54e:	9c 01       	movw	r18, r24
+ 550:	22 0f       	add	r18, r18
+ 552:	33 1f       	adc	r19, r19
+ 554:	95 95       	asr	r25
+ 556:	87 95       	ror	r24
+ 558:	82 0f       	add	r24, r18
+ 55a:	93 1f       	adc	r25, r19
+ 55c:	90 93 65 00 	sts	0x0065, r25
+ 560:	80 93 64 00 	sts	0x0064, r24
 			ADMUX = UTIL_BIN8(1001, 0011);
- 562:	f7 b8       	out	0x07, r15	; 7
- 564:	0c c0       	rjmp	.+24     	; 0x57e <main+0xb8>
+ 564:	f7 b8       	out	0x07, r15	; 7
+ 566:	0c c0       	rjmp	.+24     	; 0x580 <main+0xb8>
 			}
 		else{
 			adcval2 = value + value + (value >> 1);
- 566:	9c 01       	movw	r18, r24
- 568:	22 0f       	add	r18, r18
- 56a:	33 1f       	adc	r19, r19
- 56c:	95 95       	asr	r25
- 56e:	87 95       	ror	r24
- 570:	82 0f       	add	r24, r18
- 572:	93 1f       	adc	r25, r19
- 574:	90 93 63 00 	sts	0x0063, r25
- 578:	80 93 62 00 	sts	0x0062, r24
+ 568:	9c 01       	movw	r18, r24
+ 56a:	22 0f       	add	r18, r18
+ 56c:	33 1f       	adc	r19, r19
+ 56e:	95 95       	asr	r25
+ 570:	87 95       	ror	r24
+ 572:	82 0f       	add	r24, r18
+ 574:	93 1f       	adc	r25, r19
+ 576:	90 93 63 00 	sts	0x0063, r25
+ 57a:	80 93 62 00 	sts	0x0062, r24
 			ADMUX = UTIL_BIN8(1001, 0010);
- 57c:	e7 b8       	out	0x07, r14	; 7
+ 57e:	e7 b8       	out	0x07, r14	; 7
 		}
 		adchanel=!adchanel;
- 57e:	81 2f       	mov	r24, r17
- 580:	90 91 66 00 	lds	r25, 0x0066
- 584:	91 11       	cpse	r25, r1
- 586:	80 2f       	mov	r24, r16
- 588:	80 93 66 00 	sts	0x0066, r24
+ 580:	81 2f       	mov	r24, r17
+ 582:	90 91 66 00 	lds	r25, 0x0066
+ 586:	91 11       	cpse	r25, r1
+ 588:	80 2f       	mov	r24, r16
+ 58a:	80 93 66 00 	sts	0x0066, r24
 		ADCSRA |= (1 << ADSC);  /* start next conversion */
- 58c:	36 9a       	sbi	0x06, 6	; 6
- 58e:	cc cf       	rjmp	.-104    	; 0x528 <main+0x62>
+ 58e:	36 9a       	sbi	0x06, 6	; 6
+ 590:	cc cf       	rjmp	.-104    	; 0x52a <main+0x62>
 
-00000590 <usbSetInterrupt>:
+00000592 <usbSetInterrupt>:
     txStatus->len = len + 4;    /* len must be given including sync byte */
     DBG2(0x21 + (((int)txStatus >> 3) & 3), txStatus->buffer, len + 3);
 }
 
 USB_PUBLIC void usbSetInterrupt(uchar *data, uchar len)
 {
- 590:	cf 93       	push	r28
- 592:	c6 2f       	mov	r28, r22
+ 592:	cf 93       	push	r28
+ 594:	c6 2f       	mov	r28, r22
 
 #if USB_CFG_IMPLEMENT_HALT
     if(usbTxLen1 == USBPID_STALL)
         return;
 #endif
     if(txStatus->len & 0x10){   /* packet buffer was empty */
- 594:	20 91 7b 00 	lds	r18, 0x007B
- 598:	24 ff       	sbrs	r18, 4
- 59a:	07 c0       	rjmp	.+14     	; 0x5aa <usbSetInterrupt+0x1a>
+ 596:	20 91 7b 00 	lds	r18, 0x007B
+ 59a:	24 ff       	sbrs	r18, 4
+ 59c:	07 c0       	rjmp	.+14     	; 0x5ac <usbSetInterrupt+0x1a>
         txStatus->buffer[0] ^= USBPID_DATA0 ^ USBPID_DATA1; /* toggle token */
- 59c:	ec e7       	ldi	r30, 0x7C	; 124
- 59e:	f0 e0       	ldi	r31, 0x00	; 0
- 5a0:	30 81       	ld	r19, Z
- 5a2:	28 e8       	ldi	r18, 0x88	; 136
- 5a4:	23 27       	eor	r18, r19
- 5a6:	20 83       	st	Z, r18
- 5a8:	03 c0       	rjmp	.+6      	; 0x5b0 <usbSetInterrupt+0x20>
+ 59e:	ec e7       	ldi	r30, 0x7C	; 124
+ 5a0:	f0 e0       	ldi	r31, 0x00	; 0
+ 5a2:	30 81       	ld	r19, Z
+ 5a4:	28 e8       	ldi	r18, 0x88	; 136
+ 5a6:	23 27       	eor	r18, r19
+ 5a8:	20 83       	st	Z, r18
+ 5aa:	03 c0       	rjmp	.+6      	; 0x5b2 <usbSetInterrupt+0x20>
     }else{
         txStatus->len = USBPID_NAK; /* avoid sending outdated (overwritten) interrupt data */
- 5aa:	2a e5       	ldi	r18, 0x5A	; 90
- 5ac:	20 93 7b 00 	sts	0x007B, r18
- 5b0:	e8 2f       	mov	r30, r24
- 5b2:	f9 2f       	mov	r31, r25
+ 5ac:	2a e5       	ldi	r18, 0x5A	; 90
+ 5ae:	20 93 7b 00 	sts	0x007B, r18
+ 5b2:	e8 2f       	mov	r30, r24
+ 5b4:	f9 2f       	mov	r31, r25
     txStatus->len = len + 4;    /* len must be given including sync byte */
     DBG2(0x21 + (((int)txStatus >> 3) & 3), txStatus->buffer, len + 3);
 }
 
 USB_PUBLIC void usbSetInterrupt(uchar *data, uchar len)
 {
- 5b4:	ad e7       	ldi	r26, 0x7D	; 125
- 5b6:	b0 e0       	ldi	r27, 0x00	; 0
- 5b8:	8c 2f       	mov	r24, r28
+ 5b6:	ad e7       	ldi	r26, 0x7D	; 125
+ 5b8:	b0 e0       	ldi	r27, 0x00	; 0
+ 5ba:	8c 2f       	mov	r24, r28
         txStatus->len = USBPID_NAK; /* avoid sending outdated (overwritten) interrupt data */
     }
     p = txStatus->buffer + 1;
     i = len;
     do{                         /* if len == 0, we still copy 1 byte, but that's no problem */
         *p++ = *data++;
- 5ba:	91 91       	ld	r25, Z+
- 5bc:	9d 93       	st	X+, r25
+ 5bc:	91 91       	ld	r25, Z+
+ 5be:	9d 93       	st	X+, r25
     }while(--i > 0);            /* loop control at the end is 2 bytes shorter than at beginning */
- 5be:	81 50       	subi	r24, 0x01	; 1
- 5c0:	e1 f7       	brne	.-8      	; 0x5ba <usbSetInterrupt+0x2a>
+ 5c0:	81 50       	subi	r24, 0x01	; 1
+ 5c2:	e1 f7       	brne	.-8      	; 0x5bc <usbSetInterrupt+0x2a>
     usbCrc16Append(&txStatus->buffer[1], len);
- 5c2:	6c 2f       	mov	r22, r28
- 5c4:	8d e7       	ldi	r24, 0x7D	; 125
- 5c6:	90 e0       	ldi	r25, 0x00	; 0
- 5c8:	a6 dd       	rcall	.-1204   	; 0x116 <usbCrc16Append>
+ 5c4:	6c 2f       	mov	r22, r28
+ 5c6:	8d e7       	ldi	r24, 0x7D	; 125
+ 5c8:	90 e0       	ldi	r25, 0x00	; 0
+ 5ca:	a5 dd       	rcall	.-1206   	; 0x116 <usbCrc16Append>
     txStatus->len = len + 4;    /* len must be given including sync byte */
- 5ca:	cc 5f       	subi	r28, 0xFC	; 252
- 5cc:	c0 93 7b 00 	sts	0x007B, r28
+ 5cc:	cc 5f       	subi	r28, 0xFC	; 252
+ 5ce:	c0 93 7b 00 	sts	0x007B, r28
 }
 
 USB_PUBLIC void usbSetInterrupt(uchar *data, uchar len)
 {
     usbGenericSetInterrupt(data, len, &usbTxStatus1);
 }
- 5d0:	cf 91       	pop	r28
- 5d2:	08 95       	ret
+ 5d2:	cf 91       	pop	r28
+ 5d4:	08 95       	ret
 
-000005d4 <usbPoll>:
+000005d6 <usbPoll>:
 }
 
 /* ------------------------------------------------------------------------- */
 
 USB_PUBLIC void usbPoll(void)
 {
- 5d4:	cf 93       	push	r28
- 5d6:	df 93       	push	r29
+ 5d6:	cf 93       	push	r28
+ 5d8:	df 93       	push	r29
 schar   len;
 uchar   i;
 
     len = usbRxLen - 3;
- 5d8:	80 91 8c 00 	lds	r24, 0x008C
- 5dc:	83 50       	subi	r24, 0x03	; 3
+ 5da:	80 91 8c 00 	lds	r24, 0x008C
+ 5de:	83 50       	subi	r24, 0x03	; 3
     if(len >= 0){
- 5de:	0a f4       	brpl	.+2      	; 0x5e2 <usbPoll+0xe>
- 5e0:	b4 c0       	rjmp	.+360    	; 0x74a <usbPoll+0x176>
+ 5e0:	0a f4       	brpl	.+2      	; 0x5e4 <usbPoll+0xe>
+ 5e2:	b4 c0       	rjmp	.+360    	; 0x74c <usbPoll+0x176>
  * need data integrity checks with this driver, check the CRC in your app
  * code and report errors back to the host. Since the ACK was already sent,
  * retries must be handled on application level.
  * unsigned crc = usbCrc16(buffer + 1, usbRxLen - 3);
  */
         usbProcessRx(usbRxBuf + USB_BUFSIZE + 1 - usbInputBufOffset, len);
- 5e2:	20 91 89 00 	lds	r18, 0x0089
+ 5e4:	20 91 89 00 	lds	r18, 0x0089
     if(usbRxToken < 0x10){  /* OUT to endpoint != 0: endpoint number in usbRxToken */
         usbFunctionWriteOut(data, len);
         return;
     }
 #endif
     if(usbRxToken == (uchar)USBPID_SETUP){
- 5e6:	90 91 88 00 	lds	r25, 0x0088
- 5ea:	9d 32       	cpi	r25, 0x2D	; 45
- 5ec:	09 f0       	breq	.+2      	; 0x5f0 <usbPoll+0x1c>
- 5ee:	ab c0       	rjmp	.+342    	; 0x746 <usbPoll+0x172>
+ 5e8:	90 91 88 00 	lds	r25, 0x0088
+ 5ec:	9d 32       	cpi	r25, 0x2D	; 45
+ 5ee:	09 f0       	breq	.+2      	; 0x5f2 <usbPoll+0x1c>
+ 5f0:	ab c0       	rjmp	.+342    	; 0x748 <usbPoll+0x172>
         if(len != 8)    /* Setup size must be always 8 bytes. Ignore otherwise. */
- 5f0:	88 30       	cpi	r24, 0x08	; 8
- 5f2:	09 f0       	breq	.+2      	; 0x5f6 <usbPoll+0x22>
- 5f4:	a8 c0       	rjmp	.+336    	; 0x746 <usbPoll+0x172>
+ 5f2:	88 30       	cpi	r24, 0x08	; 8
+ 5f4:	09 f0       	breq	.+2      	; 0x5f8 <usbPoll+0x22>
+ 5f6:	a8 c0       	rjmp	.+336    	; 0x748 <usbPoll+0x172>
  * need data integrity checks with this driver, check the CRC in your app
  * code and report errors back to the host. Since the ACK was already sent,
  * retries must be handled on application level.
  * unsigned crc = usbCrc16(buffer + 1, usbRxLen - 3);
  */
         usbProcessRx(usbRxBuf + USB_BUFSIZE + 1 - usbInputBufOffset, len);
- 5f6:	cc e0       	ldi	r28, 0x0C	; 12
- 5f8:	d0 e0       	ldi	r29, 0x00	; 0
- 5fa:	c2 1b       	sub	r28, r18
- 5fc:	d1 09       	sbc	r29, r1
- 5fe:	c0 57       	subi	r28, 0x70	; 112
- 600:	df 4f       	sbci	r29, 0xFF	; 255
+ 5f8:	cc e0       	ldi	r28, 0x0C	; 12
+ 5fa:	d0 e0       	ldi	r29, 0x00	; 0
+ 5fc:	c2 1b       	sub	r28, r18
+ 5fe:	d1 09       	sbc	r29, r1
+ 600:	c0 57       	subi	r28, 0x70	; 112
+ 602:	df 4f       	sbci	r29, 0xFF	; 255
 #endif
     if(usbRxToken == (uchar)USBPID_SETUP){
         if(len != 8)    /* Setup size must be always 8 bytes. Ignore otherwise. */
             return;
         usbMsgLen_t replyLen;
         usbTxBuf[0] = USBPID_DATA0;         /* initialize data toggling */
- 602:	83 ec       	ldi	r24, 0xC3	; 195
- 604:	80 93 70 00 	sts	0x0070, r24
+ 604:	83 ec       	ldi	r24, 0xC3	; 195
+ 606:	80 93 70 00 	sts	0x0070, r24
         usbTxLen = USBPID_NAK;              /* abort pending transmit */
- 608:	8a e5       	ldi	r24, 0x5A	; 90
- 60a:	80 93 61 00 	sts	0x0061, r24
+ 60a:	8a e5       	ldi	r24, 0x5A	; 90
+ 60c:	80 93 61 00 	sts	0x0061, r24
         usbMsgFlags = 0;
- 60e:	10 92 6f 00 	sts	0x006F, r1
+ 610:	10 92 6f 00 	sts	0x006F, r1
         uchar type = rq->bmRequestType & USBRQ_TYPE_MASK;
- 612:	88 81       	ld	r24, Y
- 614:	80 76       	andi	r24, 0x60	; 96
+ 614:	88 81       	ld	r24, Y
+ 616:	80 76       	andi	r24, 0x60	; 96
         if(type != USBRQ_TYPE_STANDARD){    /* standard requests are handled by driver */
- 616:	19 f0       	breq	.+6      	; 0x61e <usbPoll+0x4a>
+ 618:	19 f0       	breq	.+6      	; 0x620 <usbPoll+0x4a>
             replyLen = usbFunctionSetup(data);
- 618:	ce 01       	movw	r24, r28
- 61a:	e2 de       	rcall	.-572    	; 0x3e0 <usbFunctionSetup>
- 61c:	8b c0       	rjmp	.+278    	; 0x734 <usbPoll+0x160>
+ 61a:	ce 01       	movw	r24, r28
+ 61c:	e1 de       	rcall	.-574    	; 0x3e0 <usbFunctionSetup>
+ 61e:	8b c0       	rjmp	.+278    	; 0x736 <usbPoll+0x160>
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar   *dataPtr = usbTxBuf + 9;    /* there are 2 bytes free space at the end of the buffer */
 uchar   value = rq->wValue.bytes[0];
- 61e:	9a 81       	ldd	r25, Y+2	; 0x02
+ 620:	9a 81       	ldd	r25, Y+2	; 0x02
 #if USB_CFG_IMPLEMENT_HALT
 uchar   index = rq->wIndex.bytes[0];
 #endif
 
     dataPtr[0] = 0; /* default reply common to USBRQ_GET_STATUS and USBRQ_GET_INTERFACE */
- 620:	10 92 79 00 	sts	0x0079, r1
+ 622:	10 92 79 00 	sts	0x0079, r1
     SWITCH_START(rq->bRequest)
- 624:	89 81       	ldd	r24, Y+1	; 0x01
+ 626:	89 81       	ldd	r24, Y+1	; 0x01
     SWITCH_CASE(USBRQ_GET_STATUS)           /* 0 */
- 626:	81 11       	cpse	r24, r1
- 628:	06 c0       	rjmp	.+12     	; 0x636 <usbPoll+0x62>
+ 628:	81 11       	cpse	r24, r1
+ 62a:	06 c0       	rjmp	.+12     	; 0x638 <usbPoll+0x62>
             dataPtr[0] =  USB_CFG_IS_SELF_POWERED;
 #if USB_CFG_IMPLEMENT_HALT
         if(recipient == USBRQ_RCPT_ENDPOINT && index == 0x81)   /* request status for endpoint 1 */
             dataPtr[0] = usbTxLen1 == USBPID_STALL;
 #endif
         dataPtr[1] = 0;
- 62a:	10 92 7a 00 	sts	0x007A, r1
+ 62c:	10 92 7a 00 	sts	0x007A, r1
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar   *dataPtr = usbTxBuf + 9;    /* there are 2 bytes free space at the end of the buffer */
- 62e:	29 e7       	ldi	r18, 0x79	; 121
- 630:	30 e0       	ldi	r19, 0x00	; 0
+ 630:	29 e7       	ldi	r18, 0x79	; 121
+ 632:	30 e0       	ldi	r19, 0x00	; 0
 #if USB_CFG_IMPLEMENT_HALT
         if(recipient == USBRQ_RCPT_ENDPOINT && index == 0x81)   /* request status for endpoint 1 */
             dataPtr[0] = usbTxLen1 == USBPID_STALL;
 #endif
         dataPtr[1] = 0;
         len = 2;
- 632:	82 e0       	ldi	r24, 0x02	; 2
- 634:	7b c0       	rjmp	.+246    	; 0x72c <usbPoll+0x158>
+ 634:	82 e0       	ldi	r24, 0x02	; 2
+ 636:	7b c0       	rjmp	.+246    	; 0x72e <usbPoll+0x158>
         if(value == 0 && index == 0x81){    /* feature 0 == HALT for endpoint == 1 */
             usbTxLen1 = rq->bRequest == USBRQ_CLEAR_FEATURE ? USBPID_NAK : USBPID_STALL;
             usbResetDataToggling();
         }
 #endif
     SWITCH_CASE(USBRQ_SET_ADDRESS)          /* 5 */
- 636:	85 30       	cpi	r24, 0x05	; 5
- 638:	31 f4       	brne	.+12     	; 0x646 <usbPoll+0x72>
+ 638:	85 30       	cpi	r24, 0x05	; 5
+ 63a:	31 f4       	brne	.+12     	; 0x648 <usbPoll+0x72>
         usbNewDeviceAddr = value;
- 63a:	90 93 8d 00 	sts	0x008D, r25
+ 63c:	90 93 8d 00 	sts	0x008D, r25
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar   *dataPtr = usbTxBuf + 9;    /* there are 2 bytes free space at the end of the buffer */
- 63e:	29 e7       	ldi	r18, 0x79	; 121
- 640:	30 e0       	ldi	r19, 0x00	; 0
+ 640:	29 e7       	ldi	r18, 0x79	; 121
+ 642:	30 e0       	ldi	r19, 0x00	; 0
 /* usbDriverSetup() is similar to usbFunctionSetup(), but it's used for
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
- 642:	80 e0       	ldi	r24, 0x00	; 0
- 644:	73 c0       	rjmp	.+230    	; 0x72c <usbPoll+0x158>
+ 644:	80 e0       	ldi	r24, 0x00	; 0
+ 646:	73 c0       	rjmp	.+230    	; 0x72e <usbPoll+0x158>
         }
 #endif
     SWITCH_CASE(USBRQ_SET_ADDRESS)          /* 5 */
         usbNewDeviceAddr = value;
         USB_SET_ADDRESS_HOOK();
     SWITCH_CASE(USBRQ_GET_DESCRIPTOR)       /* 6 */
- 646:	86 30       	cpi	r24, 0x06	; 6
- 648:	09 f0       	breq	.+2      	; 0x64c <usbPoll+0x78>
- 64a:	50 c0       	rjmp	.+160    	; 0x6ec <usbPoll+0x118>
+ 648:	86 30       	cpi	r24, 0x06	; 6
+ 64a:	09 f0       	breq	.+2      	; 0x64e <usbPoll+0x78>
+ 64c:	50 c0       	rjmp	.+160    	; 0x6ee <usbPoll+0x118>
 static inline usbMsgLen_t usbDriverDescriptor(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar       flags = USB_FLG_MSGPTR_IS_ROM;
 
     SWITCH_START(rq->wValue.bytes[1])
- 64c:	8b 81       	ldd	r24, Y+3	; 0x03
+ 64e:	8b 81       	ldd	r24, Y+3	; 0x03
     SWITCH_CASE(USBDESCR_DEVICE)    /* 1 */
- 64e:	81 30       	cpi	r24, 0x01	; 1
- 650:	41 f4       	brne	.+16     	; 0x662 <usbPoll+0x8e>
+ 650:	81 30       	cpi	r24, 0x01	; 1
+ 652:	41 f4       	brne	.+16     	; 0x664 <usbPoll+0x8e>
         GET_DESCRIPTOR(USB_CFG_DESCR_PROPS_DEVICE, usbDescriptorDevice)
- 652:	8b e6       	ldi	r24, 0x6B	; 107
- 654:	90 e0       	ldi	r25, 0x00	; 0
- 656:	90 93 8b 00 	sts	0x008B, r25
- 65a:	80 93 8a 00 	sts	0x008A, r24
- 65e:	82 e1       	ldi	r24, 0x12	; 18
- 660:	41 c0       	rjmp	.+130    	; 0x6e4 <usbPoll+0x110>
+ 654:	8b e6       	ldi	r24, 0x6B	; 107
+ 656:	90 e0       	ldi	r25, 0x00	; 0
+ 658:	90 93 8b 00 	sts	0x008B, r25
+ 65c:	80 93 8a 00 	sts	0x008A, r24
+ 660:	82 e1       	ldi	r24, 0x12	; 18
+ 662:	41 c0       	rjmp	.+130    	; 0x6e6 <usbPoll+0x110>
     SWITCH_CASE(USBDESCR_CONFIG)    /* 2 */
- 662:	82 30       	cpi	r24, 0x02	; 2
- 664:	41 f4       	brne	.+16     	; 0x676 <usbPoll+0xa2>
+ 664:	82 30       	cpi	r24, 0x02	; 2
+ 666:	41 f4       	brne	.+16     	; 0x678 <usbPoll+0xa2>
         GET_DESCRIPTOR(USB_CFG_DESCR_PROPS_CONFIGURATION, usbDescriptorConfiguration)
- 666:	89 e4       	ldi	r24, 0x49	; 73
- 668:	90 e0       	ldi	r25, 0x00	; 0
- 66a:	90 93 8b 00 	sts	0x008B, r25
- 66e:	80 93 8a 00 	sts	0x008A, r24
- 672:	82 e2       	ldi	r24, 0x22	; 34
- 674:	37 c0       	rjmp	.+110    	; 0x6e4 <usbPoll+0x110>
+ 668:	89 e4       	ldi	r24, 0x49	; 73
+ 66a:	90 e0       	ldi	r25, 0x00	; 0
+ 66c:	90 93 8b 00 	sts	0x008B, r25
+ 670:	80 93 8a 00 	sts	0x008A, r24
+ 674:	82 e2       	ldi	r24, 0x22	; 34
+ 676:	37 c0       	rjmp	.+110    	; 0x6e6 <usbPoll+0x110>
     SWITCH_CASE(USBDESCR_STRING)    /* 3 */
- 676:	83 30       	cpi	r24, 0x03	; 3
- 678:	f1 f4       	brne	.+60     	; 0x6b6 <usbPoll+0xe2>
+ 678:	83 30       	cpi	r24, 0x03	; 3
+ 67a:	f1 f4       	brne	.+60     	; 0x6b8 <usbPoll+0xe2>
         if(USB_CFG_DESCR_PROPS_STRINGS & USB_PROP_IS_RAM)
             flags = 0;
         len = usbFunctionDescriptor(rq);
 #else   /* USB_CFG_DESCR_PROPS_STRINGS & USB_PROP_IS_DYNAMIC */
         SWITCH_START(rq->wValue.bytes[0])
         SWITCH_CASE(0)
- 67a:	91 11       	cpse	r25, r1
- 67c:	08 c0       	rjmp	.+16     	; 0x68e <usbPoll+0xba>
+ 67c:	91 11       	cpse	r25, r1
+ 67e:	08 c0       	rjmp	.+16     	; 0x690 <usbPoll+0xba>
             GET_DESCRIPTOR(USB_CFG_DESCR_PROPS_STRING_0, usbDescriptorString0)
- 67e:	8f ea       	ldi	r24, 0xAF	; 175
- 680:	90 e0       	ldi	r25, 0x00	; 0
- 682:	90 93 8b 00 	sts	0x008B, r25
- 686:	80 93 8a 00 	sts	0x008A, r24
- 68a:	84 e0       	ldi	r24, 0x04	; 4
- 68c:	2b c0       	rjmp	.+86     	; 0x6e4 <usbPoll+0x110>
+ 680:	8f ea       	ldi	r24, 0xAF	; 175
+ 682:	90 e0       	ldi	r25, 0x00	; 0
+ 684:	90 93 8b 00 	sts	0x008B, r25
+ 688:	80 93 8a 00 	sts	0x008A, r24
+ 68c:	84 e0       	ldi	r24, 0x04	; 4
+ 68e:	2b c0       	rjmp	.+86     	; 0x6e6 <usbPoll+0x110>
         SWITCH_CASE(1)
- 68e:	91 30       	cpi	r25, 0x01	; 1
- 690:	41 f4       	brne	.+16     	; 0x6a2 <usbPoll+0xce>
+ 690:	91 30       	cpi	r25, 0x01	; 1
+ 692:	41 f4       	brne	.+16     	; 0x6a4 <usbPoll+0xce>
             GET_DESCRIPTOR(USB_CFG_DESCR_PROPS_STRING_VENDOR, usbDescriptorStringVendor)
- 692:	8f e8       	ldi	r24, 0x8F	; 143
- 694:	90 e0       	ldi	r25, 0x00	; 0
- 696:	90 93 8b 00 	sts	0x008B, r25
- 69a:	80 93 8a 00 	sts	0x008A, r24
- 69e:	80 e2       	ldi	r24, 0x20	; 32
- 6a0:	21 c0       	rjmp	.+66     	; 0x6e4 <usbPoll+0x110>
+ 694:	8f e8       	ldi	r24, 0x8F	; 143
+ 696:	90 e0       	ldi	r25, 0x00	; 0
+ 698:	90 93 8b 00 	sts	0x008B, r25
+ 69c:	80 93 8a 00 	sts	0x008A, r24
+ 6a0:	80 e2       	ldi	r24, 0x20	; 32
+ 6a2:	21 c0       	rjmp	.+66     	; 0x6e6 <usbPoll+0x110>
         SWITCH_CASE(2)
- 6a2:	92 30       	cpi	r25, 0x02	; 2
- 6a4:	e1 f4       	brne	.+56     	; 0x6de <usbPoll+0x10a>
+ 6a4:	92 30       	cpi	r25, 0x02	; 2
+ 6a6:	e1 f4       	brne	.+56     	; 0x6e0 <usbPoll+0x10a>
             GET_DESCRIPTOR(USB_CFG_DESCR_PROPS_STRING_PRODUCT, usbDescriptorStringDevice)
- 6a6:	8d e7       	ldi	r24, 0x7D	; 125
- 6a8:	90 e0       	ldi	r25, 0x00	; 0
- 6aa:	90 93 8b 00 	sts	0x008B, r25
- 6ae:	80 93 8a 00 	sts	0x008A, r24
- 6b2:	82 e1       	ldi	r24, 0x12	; 18
- 6b4:	17 c0       	rjmp	.+46     	; 0x6e4 <usbPoll+0x110>
+ 6a8:	8d e7       	ldi	r24, 0x7D	; 125
+ 6aa:	90 e0       	ldi	r25, 0x00	; 0
+ 6ac:	90 93 8b 00 	sts	0x008B, r25
+ 6b0:	80 93 8a 00 	sts	0x008A, r24
+ 6b4:	82 e1       	ldi	r24, 0x12	; 18
+ 6b6:	17 c0       	rjmp	.+46     	; 0x6e6 <usbPoll+0x110>
                 len = usbFunctionDescriptor(rq);
             }
         SWITCH_END
 #endif  /* USB_CFG_DESCR_PROPS_STRINGS & USB_PROP_IS_DYNAMIC */
 #if USB_CFG_DESCR_PROPS_HID_REPORT  /* only support HID descriptors if enabled */
     SWITCH_CASE(USBDESCR_HID)       /* 0x21 */
- 6b6:	81 32       	cpi	r24, 0x21	; 33
- 6b8:	41 f4       	brne	.+16     	; 0x6ca <usbPoll+0xf6>
+ 6b8:	81 32       	cpi	r24, 0x21	; 33
+ 6ba:	41 f4       	brne	.+16     	; 0x6cc <usbPoll+0xf6>
         GET_DESCRIPTOR(USB_CFG_DESCR_PROPS_HID, usbDescriptorConfiguration + 18)
- 6ba:	8b e5       	ldi	r24, 0x5B	; 91
- 6bc:	90 e0       	ldi	r25, 0x00	; 0
- 6be:	90 93 8b 00 	sts	0x008B, r25
- 6c2:	80 93 8a 00 	sts	0x008A, r24
- 6c6:	89 e0       	ldi	r24, 0x09	; 9
- 6c8:	0d c0       	rjmp	.+26     	; 0x6e4 <usbPoll+0x110>
+ 6bc:	8b e5       	ldi	r24, 0x5B	; 91
+ 6be:	90 e0       	ldi	r25, 0x00	; 0
+ 6c0:	90 93 8b 00 	sts	0x008B, r25
+ 6c4:	80 93 8a 00 	sts	0x008A, r24
+ 6c8:	89 e0       	ldi	r24, 0x09	; 9
+ 6ca:	0d c0       	rjmp	.+26     	; 0x6e6 <usbPoll+0x110>
     SWITCH_CASE(USBDESCR_HID_REPORT)/* 0x22 */
- 6ca:	82 32       	cpi	r24, 0x22	; 34
- 6cc:	51 f4       	brne	.+20     	; 0x6e2 <usbPoll+0x10e>
+ 6cc:	82 32       	cpi	r24, 0x22	; 34
+ 6ce:	51 f4       	brne	.+20     	; 0x6e4 <usbPoll+0x10e>
         GET_DESCRIPTOR(USB_CFG_DESCR_PROPS_HID_REPORT, usbDescriptorHidReport)
- 6ce:	8e e1       	ldi	r24, 0x1E	; 30
- 6d0:	90 e0       	ldi	r25, 0x00	; 0
- 6d2:	90 93 8b 00 	sts	0x008B, r25
- 6d6:	80 93 8a 00 	sts	0x008A, r24
- 6da:	8b e2       	ldi	r24, 0x2B	; 43
- 6dc:	03 c0       	rjmp	.+6      	; 0x6e4 <usbPoll+0x110>
+ 6d0:	8e e1       	ldi	r24, 0x1E	; 30
+ 6d2:	90 e0       	ldi	r25, 0x00	; 0
+ 6d4:	90 93 8b 00 	sts	0x008B, r25
+ 6d8:	80 93 8a 00 	sts	0x008A, r24
+ 6dc:	8b e2       	ldi	r24, 0x2B	; 43
+ 6de:	03 c0       	rjmp	.+6      	; 0x6e6 <usbPoll+0x110>
 /* usbDriverDescriptor() is similar to usbFunctionDescriptor(), but used
  * internally for all types of descriptors.
  */
 static inline usbMsgLen_t usbDriverDescriptor(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
- 6de:	80 e0       	ldi	r24, 0x00	; 0
- 6e0:	01 c0       	rjmp	.+2      	; 0x6e4 <usbPoll+0x110>
- 6e2:	80 e0       	ldi	r24, 0x00	; 0
+ 6e0:	80 e0       	ldi	r24, 0x00	; 0
+ 6e2:	01 c0       	rjmp	.+2      	; 0x6e6 <usbPoll+0x110>
+ 6e4:	80 e0       	ldi	r24, 0x00	; 0
     SWITCH_DEFAULT
         if(USB_CFG_DESCR_PROPS_UNKNOWN & USB_PROP_IS_DYNAMIC){
             len = usbFunctionDescriptor(rq);
         }
     SWITCH_END
     usbMsgFlags = flags;
- 6e4:	90 e4       	ldi	r25, 0x40	; 64
- 6e6:	90 93 6f 00 	sts	0x006F, r25
- 6ea:	24 c0       	rjmp	.+72     	; 0x734 <usbPoll+0x160>
+ 6e6:	90 e4       	ldi	r25, 0x40	; 64
+ 6e8:	90 93 6f 00 	sts	0x006F, r25
+ 6ec:	24 c0       	rjmp	.+72     	; 0x736 <usbPoll+0x160>
         usbNewDeviceAddr = value;
         USB_SET_ADDRESS_HOOK();
     SWITCH_CASE(USBRQ_GET_DESCRIPTOR)       /* 6 */
         len = usbDriverDescriptor(rq);
         goto skipMsgPtrAssignment;
     SWITCH_CASE(USBRQ_GET_CONFIGURATION)    /* 8 */
- 6ec:	88 30       	cpi	r24, 0x08	; 8
- 6ee:	99 f0       	breq	.+38     	; 0x716 <usbPoll+0x142>
+ 6ee:	88 30       	cpi	r24, 0x08	; 8
+ 6f0:	99 f0       	breq	.+38     	; 0x718 <usbPoll+0x142>
         dataPtr = &usbConfiguration;  /* send current configuration value */
         len = 1;
     SWITCH_CASE(USBRQ_SET_CONFIGURATION)    /* 9 */
- 6f0:	89 30       	cpi	r24, 0x09	; 9
- 6f2:	31 f4       	brne	.+12     	; 0x700 <usbPoll+0x12c>
+ 6f2:	89 30       	cpi	r24, 0x09	; 9
+ 6f4:	31 f4       	brne	.+12     	; 0x702 <usbPoll+0x12c>
         usbConfiguration = value;
- 6f4:	90 93 8f 00 	sts	0x008F, r25
+ 6f6:	90 93 8f 00 	sts	0x008F, r25
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar   *dataPtr = usbTxBuf + 9;    /* there are 2 bytes free space at the end of the buffer */
- 6f8:	29 e7       	ldi	r18, 0x79	; 121
- 6fa:	30 e0       	ldi	r19, 0x00	; 0
+ 6fa:	29 e7       	ldi	r18, 0x79	; 121
+ 6fc:	30 e0       	ldi	r19, 0x00	; 0
 /* usbDriverSetup() is similar to usbFunctionSetup(), but it's used for
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
- 6fc:	80 e0       	ldi	r24, 0x00	; 0
- 6fe:	16 c0       	rjmp	.+44     	; 0x72c <usbPoll+0x158>
+ 6fe:	80 e0       	ldi	r24, 0x00	; 0
+ 700:	16 c0       	rjmp	.+44     	; 0x72e <usbPoll+0x158>
         dataPtr = &usbConfiguration;  /* send current configuration value */
         len = 1;
     SWITCH_CASE(USBRQ_SET_CONFIGURATION)    /* 9 */
         usbConfiguration = value;
         usbResetStall();
     SWITCH_CASE(USBRQ_GET_INTERFACE)        /* 10 */
- 700:	8a 30       	cpi	r24, 0x0A	; 10
- 702:	69 f0       	breq	.+26     	; 0x71e <usbPoll+0x14a>
+ 702:	8a 30       	cpi	r24, 0x0A	; 10
+ 704:	69 f0       	breq	.+26     	; 0x720 <usbPoll+0x14a>
         len = 1;
 #if USB_CFG_HAVE_INTRIN_ENDPOINT && !USB_CFG_SUPPRESS_INTR_CODE
     SWITCH_CASE(USBRQ_SET_INTERFACE)        /* 11 */
- 704:	8b 30       	cpi	r24, 0x0B	; 11
- 706:	79 f4       	brne	.+30     	; 0x726 <usbPoll+0x152>
+ 706:	8b 30       	cpi	r24, 0x0B	; 11
+ 708:	79 f4       	brne	.+30     	; 0x728 <usbPoll+0x152>
 /* ------------------------------------------------------------------------- */
 
 static inline void  usbResetDataToggling(void)
 {
 #if USB_CFG_HAVE_INTRIN_ENDPOINT && !USB_CFG_SUPPRESS_INTR_CODE
     USB_SET_DATATOKEN1(USB_INITIAL_DATATOKEN);  /* reset data toggling for interrupt endpoint */
- 708:	8b e4       	ldi	r24, 0x4B	; 75
- 70a:	80 93 7c 00 	sts	0x007C, r24
+ 70a:	8b e4       	ldi	r24, 0x4B	; 75
+ 70c:	80 93 7c 00 	sts	0x007C, r24
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar   *dataPtr = usbTxBuf + 9;    /* there are 2 bytes free space at the end of the buffer */
- 70e:	29 e7       	ldi	r18, 0x79	; 121
- 710:	30 e0       	ldi	r19, 0x00	; 0
+ 710:	29 e7       	ldi	r18, 0x79	; 121
+ 712:	30 e0       	ldi	r19, 0x00	; 0
 /* usbDriverSetup() is similar to usbFunctionSetup(), but it's used for
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
- 712:	80 e0       	ldi	r24, 0x00	; 0
- 714:	0b c0       	rjmp	.+22     	; 0x72c <usbPoll+0x158>
+ 714:	80 e0       	ldi	r24, 0x00	; 0
+ 716:	0b c0       	rjmp	.+22     	; 0x72e <usbPoll+0x158>
         USB_SET_ADDRESS_HOOK();
     SWITCH_CASE(USBRQ_GET_DESCRIPTOR)       /* 6 */
         len = usbDriverDescriptor(rq);
         goto skipMsgPtrAssignment;
     SWITCH_CASE(USBRQ_GET_CONFIGURATION)    /* 8 */
         dataPtr = &usbConfiguration;  /* send current configuration value */
- 716:	2f e8       	ldi	r18, 0x8F	; 143
- 718:	30 e0       	ldi	r19, 0x00	; 0
+ 718:	2f e8       	ldi	r18, 0x8F	; 143
+ 71a:	30 e0       	ldi	r19, 0x00	; 0
         len = 1;
- 71a:	81 e0       	ldi	r24, 0x01	; 1
- 71c:	07 c0       	rjmp	.+14     	; 0x72c <usbPoll+0x158>
+ 71c:	81 e0       	ldi	r24, 0x01	; 1
+ 71e:	07 c0       	rjmp	.+14     	; 0x72e <usbPoll+0x158>
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar   *dataPtr = usbTxBuf + 9;    /* there are 2 bytes free space at the end of the buffer */
- 71e:	29 e7       	ldi	r18, 0x79	; 121
- 720:	30 e0       	ldi	r19, 0x00	; 0
+ 720:	29 e7       	ldi	r18, 0x79	; 121
+ 722:	30 e0       	ldi	r19, 0x00	; 0
         len = 1;
     SWITCH_CASE(USBRQ_SET_CONFIGURATION)    /* 9 */
         usbConfiguration = value;
         usbResetStall();
     SWITCH_CASE(USBRQ_GET_INTERFACE)        /* 10 */
         len = 1;
- 722:	81 e0       	ldi	r24, 0x01	; 1
- 724:	03 c0       	rjmp	.+6      	; 0x72c <usbPoll+0x158>
+ 724:	81 e0       	ldi	r24, 0x01	; 1
+ 726:	03 c0       	rjmp	.+6      	; 0x72e <usbPoll+0x158>
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
 uchar   *dataPtr = usbTxBuf + 9;    /* there are 2 bytes free space at the end of the buffer */
- 726:	29 e7       	ldi	r18, 0x79	; 121
- 728:	30 e0       	ldi	r19, 0x00	; 0
+ 728:	29 e7       	ldi	r18, 0x79	; 121
+ 72a:	30 e0       	ldi	r19, 0x00	; 0
 /* usbDriverSetup() is similar to usbFunctionSetup(), but it's used for
  * standard requests instead of class and custom requests.
  */
 static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)
 {
 usbMsgLen_t len = 0;
- 72a:	80 e0       	ldi	r24, 0x00	; 0
+ 72c:	80 e0       	ldi	r24, 0x00	; 0
         usbResetStall();
 #endif
     SWITCH_DEFAULT                          /* 7=SET_DESCRIPTOR, 12=SYNC_FRAME */
         /* Should we add an optional hook here? */
     SWITCH_END
     usbMsgPtr = (usbMsgPtr_t)dataPtr;
- 72c:	30 93 8b 00 	sts	0x008B, r19
- 730:	20 93 8a 00 	sts	0x008A, r18
+ 72e:	30 93 8b 00 	sts	0x008B, r19
+ 732:	20 93 8a 00 	sts	0x008A, r18
             }
             usbMsgFlags = USB_FLG_USE_USER_RW;
         }else   /* The 'else' prevents that we limit a replyLen of USB_NO_MSG to the maximum transfer len. */
 #endif
         if(sizeof(replyLen) < sizeof(rq->wLength.word)){ /* help compiler with optimizing */
             if(!rq->wLength.bytes[1] && replyLen > rq->wLength.bytes[0])    /* limit length to max */
- 734:	9f 81       	ldd	r25, Y+7	; 0x07
- 736:	91 11       	cpse	r25, r1
- 738:	04 c0       	rjmp	.+8      	; 0x742 <usbPoll+0x16e>
- 73a:	9e 81       	ldd	r25, Y+6	; 0x06
- 73c:	98 17       	cp	r25, r24
- 73e:	08 f4       	brcc	.+2      	; 0x742 <usbPoll+0x16e>
- 740:	89 2f       	mov	r24, r25
+ 736:	9f 81       	ldd	r25, Y+7	; 0x07
+ 738:	91 11       	cpse	r25, r1
+ 73a:	04 c0       	rjmp	.+8      	; 0x744 <usbPoll+0x16e>
+ 73c:	9e 81       	ldd	r25, Y+6	; 0x06
+ 73e:	98 17       	cp	r25, r24
+ 740:	08 f4       	brcc	.+2      	; 0x744 <usbPoll+0x16e>
+ 742:	89 2f       	mov	r24, r25
                 replyLen = rq->wLength.bytes[0];
         }else{
             if(replyLen > rq->wLength.word)     /* limit length to max */
                 replyLen = rq->wLength.word;
         }
         usbMsgLen = replyLen;
- 742:	80 93 60 00 	sts	0x0060, r24
+ 744:	80 93 60 00 	sts	0x0060, r24
         usbProcessRx(usbRxBuf + USB_BUFSIZE + 1 - usbInputBufOffset, len);
 #if USB_CFG_HAVE_FLOWCONTROL
         if(usbRxLen > 0)    /* only mark as available if not inactivated */
             usbRxLen = 0;
 #else
         usbRxLen = 0;       /* mark rx buffer as available */
- 746:	10 92 8c 00 	sts	0x008C, r1
+ 748:	10 92 8c 00 	sts	0x008C, r1
 #endif
     }
     if(usbTxLen & 0x10){    /* transmit system idle */
- 74a:	80 91 61 00 	lds	r24, 0x0061
- 74e:	84 ff       	sbrs	r24, 4
- 750:	4d c0       	rjmp	.+154    	; 0x7ec <usbPoll+0x218>
+ 74c:	80 91 61 00 	lds	r24, 0x0061
+ 750:	84 ff       	sbrs	r24, 4
+ 752:	4d c0       	rjmp	.+154    	; 0x7ee <usbPoll+0x218>
         if(usbMsgLen != USB_NO_MSG){    /* transmit data pending? */
- 752:	80 91 60 00 	lds	r24, 0x0060
- 756:	8f 3f       	cpi	r24, 0xFF	; 255
- 758:	09 f4       	brne	.+2      	; 0x75c <usbPoll+0x188>
- 75a:	48 c0       	rjmp	.+144    	; 0x7ec <usbPoll+0x218>
- 75c:	c8 2f       	mov	r28, r24
- 75e:	89 30       	cpi	r24, 0x09	; 9
- 760:	08 f0       	brcs	.+2      	; 0x764 <usbPoll+0x190>
- 762:	c8 e0       	ldi	r28, 0x08	; 8
+ 754:	80 91 60 00 	lds	r24, 0x0060
+ 758:	8f 3f       	cpi	r24, 0xFF	; 255
+ 75a:	09 f4       	brne	.+2      	; 0x75e <usbPoll+0x188>
+ 75c:	48 c0       	rjmp	.+144    	; 0x7ee <usbPoll+0x218>
+ 75e:	c8 2f       	mov	r28, r24
+ 760:	89 30       	cpi	r24, 0x09	; 9
+ 762:	08 f0       	brcs	.+2      	; 0x766 <usbPoll+0x190>
+ 764:	c8 e0       	ldi	r28, 0x08	; 8
 uchar       len;
 
     wantLen = usbMsgLen;
     if(wantLen > 8)
         wantLen = 8;
     usbMsgLen -= wantLen;
- 764:	8c 1b       	sub	r24, r28
- 766:	80 93 60 00 	sts	0x0060, r24
+ 766:	8c 1b       	sub	r24, r28
+ 768:	80 93 60 00 	sts	0x0060, r24
     usbTxBuf[0] ^= USBPID_DATA0 ^ USBPID_DATA1; /* DATA toggling */
- 76a:	e0 e7       	ldi	r30, 0x70	; 112
- 76c:	f0 e0       	ldi	r31, 0x00	; 0
- 76e:	90 81       	ld	r25, Z
- 770:	88 e8       	ldi	r24, 0x88	; 136
- 772:	89 27       	eor	r24, r25
- 774:	80 83       	st	Z, r24
+ 76c:	e0 e7       	ldi	r30, 0x70	; 112
+ 76e:	f0 e0       	ldi	r31, 0x00	; 0
+ 770:	90 81       	ld	r25, Z
+ 772:	88 e8       	ldi	r24, 0x88	; 136
+ 774:	89 27       	eor	r24, r25
+ 776:	80 83       	st	Z, r24
 /* This function is similar to usbFunctionRead(), but it's also called for
  * data handled automatically by the driver (e.g. descriptor reads).
  */
 static uchar usbDeviceRead(uchar *data, uchar len)
 {
     if(len > 0){    /* don't bother app with 0 sized reads */
- 776:	cc 23       	and	r28, r28
- 778:	09 f4       	brne	.+2      	; 0x77c <usbPoll+0x1a8>
- 77a:	5a c0       	rjmp	.+180    	; 0x830 <usbPoll+0x25c>
+ 778:	cc 23       	and	r28, r28
+ 77a:	09 f4       	brne	.+2      	; 0x77e <usbPoll+0x1a8>
+ 77c:	5a c0       	rjmp	.+180    	; 0x832 <usbPoll+0x25c>
             len = usbFunctionRead(data, len);
         }else
 #endif
         {
             uchar i = len;
             usbMsgPtr_t r = usbMsgPtr;
- 77c:	80 91 8a 00 	lds	r24, 0x008A
- 780:	90 91 8b 00 	lds	r25, 0x008B
+ 77e:	80 91 8a 00 	lds	r24, 0x008A
+ 782:	90 91 8b 00 	lds	r25, 0x008B
             if(usbMsgFlags & USB_FLG_MSGPTR_IS_ROM){    /* ROM data */
- 784:	20 91 6f 00 	lds	r18, 0x006F
- 788:	26 ff       	sbrs	r18, 6
- 78a:	11 c0       	rjmp	.+34     	; 0x7ae <usbPoll+0x1da>
- 78c:	a1 e7       	ldi	r26, 0x71	; 113
- 78e:	b0 e0       	ldi	r27, 0x00	; 0
- 790:	fc 01       	movw	r30, r24
- 792:	2c 2f       	mov	r18, r28
+ 786:	20 91 6f 00 	lds	r18, 0x006F
+ 78a:	26 ff       	sbrs	r18, 6
+ 78c:	11 c0       	rjmp	.+34     	; 0x7b0 <usbPoll+0x1da>
+ 78e:	a1 e7       	ldi	r26, 0x71	; 113
+ 790:	b0 e0       	ldi	r27, 0x00	; 0
+ 792:	fc 01       	movw	r30, r24
+ 794:	2c 2f       	mov	r18, r28
                 do{
                     uchar c = USB_READ_FLASH(r);    /* assign to char size variable to enforce byte ops */
- 794:	34 91       	lpm	r19, Z
+ 796:	34 91       	lpm	r19, Z
                     *data++ = c;
- 796:	3d 93       	st	X+, r19
+ 798:	3d 93       	st	X+, r19
                     r++;
- 798:	31 96       	adiw	r30, 0x01	; 1
+ 79a:	31 96       	adiw	r30, 0x01	; 1
                 }while(--i);
- 79a:	21 50       	subi	r18, 0x01	; 1
- 79c:	d9 f7       	brne	.-10     	; 0x794 <usbPoll+0x1c0>
- 79e:	2f ef       	ldi	r18, 0xFF	; 255
- 7a0:	2c 0f       	add	r18, r28
- 7a2:	30 e0       	ldi	r19, 0x00	; 0
- 7a4:	2f 5f       	subi	r18, 0xFF	; 255
- 7a6:	3f 4f       	sbci	r19, 0xFF	; 255
- 7a8:	82 0f       	add	r24, r18
- 7aa:	93 1f       	adc	r25, r19
- 7ac:	0f c0       	rjmp	.+30     	; 0x7cc <usbPoll+0x1f8>
- 7ae:	dc 01       	movw	r26, r24
- 7b0:	e1 e7       	ldi	r30, 0x71	; 113
- 7b2:	f0 e0       	ldi	r31, 0x00	; 0
+ 79c:	21 50       	subi	r18, 0x01	; 1
+ 79e:	d9 f7       	brne	.-10     	; 0x796 <usbPoll+0x1c0>
+ 7a0:	2f ef       	ldi	r18, 0xFF	; 255
+ 7a2:	2c 0f       	add	r18, r28
+ 7a4:	30 e0       	ldi	r19, 0x00	; 0
+ 7a6:	2f 5f       	subi	r18, 0xFF	; 255
+ 7a8:	3f 4f       	sbci	r19, 0xFF	; 255
+ 7aa:	82 0f       	add	r24, r18
+ 7ac:	93 1f       	adc	r25, r19
+ 7ae:	0f c0       	rjmp	.+30     	; 0x7ce <usbPoll+0x1f8>
+ 7b0:	dc 01       	movw	r26, r24
+ 7b2:	e1 e7       	ldi	r30, 0x71	; 113
+ 7b4:	f0 e0       	ldi	r31, 0x00	; 0
         }else
 #endif
         {
             uchar i = len;
             usbMsgPtr_t r = usbMsgPtr;
             if(usbMsgFlags & USB_FLG_MSGPTR_IS_ROM){    /* ROM data */
- 7b4:	2c 2f       	mov	r18, r28
+ 7b6:	2c 2f       	mov	r18, r28
                     *data++ = c;
                     r++;
                 }while(--i);
             }else{  /* RAM data */
                 do{
                     *data++ = *((uchar *)r);
- 7b6:	3d 91       	ld	r19, X+
- 7b8:	31 93       	st	Z+, r19
+ 7b8:	3d 91       	ld	r19, X+
+ 7ba:	31 93       	st	Z+, r19
                     r++;
                 }while(--i);
- 7ba:	21 50       	subi	r18, 0x01	; 1
- 7bc:	e1 f7       	brne	.-8      	; 0x7b6 <usbPoll+0x1e2>
- 7be:	2f ef       	ldi	r18, 0xFF	; 255
- 7c0:	2c 0f       	add	r18, r28
- 7c2:	30 e0       	ldi	r19, 0x00	; 0
- 7c4:	2f 5f       	subi	r18, 0xFF	; 255
- 7c6:	3f 4f       	sbci	r19, 0xFF	; 255
- 7c8:	82 0f       	add	r24, r18
- 7ca:	93 1f       	adc	r25, r19
+ 7bc:	21 50       	subi	r18, 0x01	; 1
+ 7be:	e1 f7       	brne	.-8      	; 0x7b8 <usbPoll+0x1e2>
+ 7c0:	2f ef       	ldi	r18, 0xFF	; 255
+ 7c2:	2c 0f       	add	r18, r28
+ 7c4:	30 e0       	ldi	r19, 0x00	; 0
+ 7c6:	2f 5f       	subi	r18, 0xFF	; 255
+ 7c8:	3f 4f       	sbci	r19, 0xFF	; 255
+ 7ca:	82 0f       	add	r24, r18
+ 7cc:	93 1f       	adc	r25, r19
             }
             usbMsgPtr = r;
- 7cc:	90 93 8b 00 	sts	0x008B, r25
- 7d0:	80 93 8a 00 	sts	0x008A, r24
+ 7ce:	90 93 8b 00 	sts	0x008B, r25
+ 7d2:	80 93 8a 00 	sts	0x008A, r24
         wantLen = 8;
     usbMsgLen -= wantLen;
     usbTxBuf[0] ^= USBPID_DATA0 ^ USBPID_DATA1; /* DATA toggling */
     len = usbDeviceRead(usbTxBuf + 1, wantLen);
     if(len <= 8){           /* valid data packet */
         usbCrc16Append(&usbTxBuf[1], len);
- 7d4:	6c 2f       	mov	r22, r28
- 7d6:	81 e7       	ldi	r24, 0x71	; 113
- 7d8:	90 e0       	ldi	r25, 0x00	; 0
- 7da:	9d dc       	rcall	.-1734   	; 0x116 <usbCrc16Append>
+ 7d6:	6c 2f       	mov	r22, r28
+ 7d8:	81 e7       	ldi	r24, 0x71	; 113
+ 7da:	90 e0       	ldi	r25, 0x00	; 0
+ 7dc:	9c dc       	rcall	.-1736   	; 0x116 <usbCrc16Append>
         len += 4;           /* length including sync byte */
- 7dc:	cc 5f       	subi	r28, 0xFC	; 252
+ 7de:	cc 5f       	subi	r28, 0xFC	; 252
         if(len < 12)        /* a partial package identifies end of message */
- 7de:	cc 30       	cpi	r28, 0x0C	; 12
- 7e0:	18 f4       	brcc	.+6      	; 0x7e8 <usbPoll+0x214>
+ 7e0:	cc 30       	cpi	r28, 0x0C	; 12
+ 7e2:	18 f4       	brcc	.+6      	; 0x7ea <usbPoll+0x214>
             usbMsgLen = USB_NO_MSG;
- 7e2:	8f ef       	ldi	r24, 0xFF	; 255
- 7e4:	80 93 60 00 	sts	0x0060, r24
+ 7e4:	8f ef       	ldi	r24, 0xFF	; 255
+ 7e6:	80 93 60 00 	sts	0x0060, r24
     }else{
         len = USBPID_STALL;   /* stall the endpoint */
         usbMsgLen = USB_NO_MSG;
     }
     usbTxLen = len;
- 7e8:	c0 93 61 00 	sts	0x0061, r28
+ 7ea:	c0 93 61 00 	sts	0x0061, r28
         if(usbMsgLen != USB_NO_MSG){    /* transmit data pending? */
             usbBuildTxBlock();
         }
     }
     for(i = 20; i > 0; i--){
         uchar usbLineStatus = USBIN & USBMASK;
- 7ec:	86 b3       	in	r24, 0x16	; 22
- 7ee:	85 70       	andi	r24, 0x05	; 5
+ 7ee:	86 b3       	in	r24, 0x16	; 22
+ 7f0:	85 70       	andi	r24, 0x05	; 5
         if(usbLineStatus != 0)  /* SE0 has ended */
- 7f0:	b1 f4       	brne	.+44     	; 0x81e <usbPoll+0x24a>
+ 7f2:	b1 f4       	brne	.+44     	; 0x820 <usbPoll+0x24a>
     if(usbTxLen & 0x10){    /* transmit system idle */
         if(usbMsgLen != USB_NO_MSG){    /* transmit data pending? */
             usbBuildTxBlock();
         }
     }
     for(i = 20; i > 0; i--){
- 7f2:	83 e1       	ldi	r24, 0x13	; 19
+ 7f4:	83 e1       	ldi	r24, 0x13	; 19
         uchar usbLineStatus = USBIN & USBMASK;
- 7f4:	96 b3       	in	r25, 0x16	; 22
- 7f6:	95 70       	andi	r25, 0x05	; 5
+ 7f6:	96 b3       	in	r25, 0x16	; 22
+ 7f8:	95 70       	andi	r25, 0x05	; 5
         if(usbLineStatus != 0)  /* SE0 has ended */
- 7f8:	99 f4       	brne	.+38     	; 0x820 <usbPoll+0x24c>
+ 7fa:	99 f4       	brne	.+38     	; 0x822 <usbPoll+0x24c>
     if(usbTxLen & 0x10){    /* transmit system idle */
         if(usbMsgLen != USB_NO_MSG){    /* transmit data pending? */
             usbBuildTxBlock();
         }
     }
     for(i = 20; i > 0; i--){
- 7fa:	81 50       	subi	r24, 0x01	; 1
- 7fc:	d9 f7       	brne	.-10     	; 0x7f4 <usbPoll+0x220>
+ 7fc:	81 50       	subi	r24, 0x01	; 1
+ 7fe:	d9 f7       	brne	.-10     	; 0x7f6 <usbPoll+0x220>
         uchar usbLineStatus = USBIN & USBMASK;
         if(usbLineStatus != 0)  /* SE0 has ended */
             goto isNotReset;
     }
     /* RESET condition, called multiple times during reset */
     usbNewDeviceAddr = 0;
- 7fe:	10 92 8d 00 	sts	0x008D, r1
+ 800:	10 92 8d 00 	sts	0x008D, r1
     usbDeviceAddr = 0;
- 802:	10 92 87 00 	sts	0x0087, r1
+ 804:	10 92 87 00 	sts	0x0087, r1
 
 static inline void usbHandleResetHook(uchar notResetState)
 {
 #ifdef USB_RESET_HOOK
 static uchar    wasReset;
 uchar           isReset = !notResetState;
- 806:	c1 e0       	ldi	r28, 0x01	; 1
- 808:	81 11       	cpse	r24, r1
- 80a:	c0 e0       	ldi	r28, 0x00	; 0
+ 808:	c1 e0       	ldi	r28, 0x01	; 1
+ 80a:	81 11       	cpse	r24, r1
+ 80c:	c0 e0       	ldi	r28, 0x00	; 0
 
     if(wasReset != isReset){
- 80c:	80 91 6e 00 	lds	r24, 0x006E
- 810:	c8 13       	cpse	r28, r24
- 812:	02 c0       	rjmp	.+4      	; 0x818 <usbPoll+0x244>
- 814:	13 c0       	rjmp	.+38     	; 0x83c <usbPoll+0x268>
+ 80e:	80 91 6e 00 	lds	r24, 0x006E
+ 812:	c8 13       	cpse	r28, r24
+ 814:	02 c0       	rjmp	.+4      	; 0x81a <usbPoll+0x244>
+ 816:	13 c0       	rjmp	.+38     	; 0x83e <usbPoll+0x268>
         USB_RESET_HOOK(isReset);
- 816:	0b de       	rcall	.-1002   	; 0x42e <usbEventResetReady>
+ 818:	0a de       	rcall	.-1004   	; 0x42e <usbEventResetReady>
         wasReset = isReset;
- 818:	c0 93 6e 00 	sts	0x006E, r28
- 81c:	0f c0       	rjmp	.+30     	; 0x83c <usbPoll+0x268>
+ 81a:	c0 93 6e 00 	sts	0x006E, r28
+ 81e:	0f c0       	rjmp	.+30     	; 0x83e <usbPoll+0x268>
     if(usbTxLen & 0x10){    /* transmit system idle */
         if(usbMsgLen != USB_NO_MSG){    /* transmit data pending? */
             usbBuildTxBlock();
         }
     }
     for(i = 20; i > 0; i--){
- 81e:	84 e1       	ldi	r24, 0x14	; 20
+ 820:	84 e1       	ldi	r24, 0x14	; 20
 
 static inline void usbHandleResetHook(uchar notResetState)
 {
 #ifdef USB_RESET_HOOK
 static uchar    wasReset;
 uchar           isReset = !notResetState;
- 820:	c1 e0       	ldi	r28, 0x01	; 1
- 822:	81 11       	cpse	r24, r1
- 824:	c0 e0       	ldi	r28, 0x00	; 0
+ 822:	c1 e0       	ldi	r28, 0x01	; 1
+ 824:	81 11       	cpse	r24, r1
+ 826:	c0 e0       	ldi	r28, 0x00	; 0
 
     if(wasReset != isReset){
- 826:	80 91 6e 00 	lds	r24, 0x006E
- 82a:	c8 13       	cpse	r28, r24
- 82c:	f4 cf       	rjmp	.-24     	; 0x816 <usbPoll+0x242>
- 82e:	06 c0       	rjmp	.+12     	; 0x83c <usbPoll+0x268>
+ 828:	80 91 6e 00 	lds	r24, 0x006E
+ 82c:	c8 13       	cpse	r28, r24
+ 82e:	f4 cf       	rjmp	.-24     	; 0x818 <usbPoll+0x242>
+ 830:	06 c0       	rjmp	.+12     	; 0x83e <usbPoll+0x268>
         wantLen = 8;
     usbMsgLen -= wantLen;
     usbTxBuf[0] ^= USBPID_DATA0 ^ USBPID_DATA1; /* DATA toggling */
     len = usbDeviceRead(usbTxBuf + 1, wantLen);
     if(len <= 8){           /* valid data packet */
         usbCrc16Append(&usbTxBuf[1], len);
- 830:	6c 2f       	mov	r22, r28
- 832:	81 e7       	ldi	r24, 0x71	; 113
- 834:	90 e0       	ldi	r25, 0x00	; 0
- 836:	6f dc       	rcall	.-1826   	; 0x116 <usbCrc16Append>
+ 832:	6c 2f       	mov	r22, r28
+ 834:	81 e7       	ldi	r24, 0x71	; 113
+ 836:	90 e0       	ldi	r25, 0x00	; 0
+ 838:	6e dc       	rcall	.-1828   	; 0x116 <usbCrc16Append>
         len += 4;           /* length including sync byte */
- 838:	cc 5f       	subi	r28, 0xFC	; 252
- 83a:	d3 cf       	rjmp	.-90     	; 0x7e2 <usbPoll+0x20e>
+ 83a:	cc 5f       	subi	r28, 0xFC	; 252
+ 83c:	d3 cf       	rjmp	.-90     	; 0x7e4 <usbPoll+0x20e>
     usbDeviceAddr = 0;
     usbResetStall();
     DBG1(0xff, 0, 0);
 isNotReset:
     usbHandleResetHook(i);
 }
- 83c:	df 91       	pop	r29
- 83e:	cf 91       	pop	r28
- 840:	08 95       	ret
+ 83e:	df 91       	pop	r29
+ 840:	cf 91       	pop	r28
+ 842:	08 95       	ret
 
-00000842 <usbInit>:
+00000844 <usbInit>:
 /* ------------------------------------------------------------------------- */
 
 USB_PUBLIC void usbInit(void)
 {
 #if USB_INTR_CFG_SET != 0
     USB_INTR_CFG |= USB_INTR_CFG_SET;
- 842:	85 b7       	in	r24, 0x35	; 53
- 844:	83 60       	ori	r24, 0x03	; 3
- 846:	85 bf       	out	0x35, r24	; 53
+ 844:	85 b7       	in	r24, 0x35	; 53
+ 846:	83 60       	ori	r24, 0x03	; 3
+ 848:	85 bf       	out	0x35, r24	; 53
 #endif
 #if USB_INTR_CFG_CLR != 0
     USB_INTR_CFG &= ~(USB_INTR_CFG_CLR);
 #endif
     USB_INTR_ENABLE |= (1 << USB_INTR_ENABLE_BIT);
- 848:	8b b7       	in	r24, 0x3b	; 59
- 84a:	80 64       	ori	r24, 0x40	; 64
- 84c:	8b bf       	out	0x3b, r24	; 59
+ 84a:	8b b7       	in	r24, 0x3b	; 59
+ 84c:	80 64       	ori	r24, 0x40	; 64
+ 84e:	8b bf       	out	0x3b, r24	; 59
 /* ------------------------------------------------------------------------- */
 
 static inline void  usbResetDataToggling(void)
 {
 #if USB_CFG_HAVE_INTRIN_ENDPOINT && !USB_CFG_SUPPRESS_INTR_CODE
     USB_SET_DATATOKEN1(USB_INITIAL_DATATOKEN);  /* reset data toggling for interrupt endpoint */
- 84e:	8b e4       	ldi	r24, 0x4B	; 75
- 850:	80 93 7c 00 	sts	0x007C, r24
+ 850:	8b e4       	ldi	r24, 0x4B	; 75
+ 852:	80 93 7c 00 	sts	0x007C, r24
     USB_INTR_CFG &= ~(USB_INTR_CFG_CLR);
 #endif
     USB_INTR_ENABLE |= (1 << USB_INTR_ENABLE_BIT);
     usbResetDataToggling();
 #if USB_CFG_HAVE_INTRIN_ENDPOINT && !USB_CFG_SUPPRESS_INTR_CODE
     usbTxLen1 = USBPID_NAK;
- 854:	8a e5       	ldi	r24, 0x5A	; 90
- 856:	80 93 7b 00 	sts	0x007B, r24
- 85a:	08 95       	ret
+ 856:	8a e5       	ldi	r24, 0x5A	; 90
+ 858:	80 93 7b 00 	sts	0x007B, r24
+ 85c:	08 95       	ret
 
-0000085c <__eerd_byte_tn85>:
- 85c:	e1 99       	sbic	0x1c, 1	; 28
- 85e:	fe cf       	rjmp	.-4      	; 0x85c <__eerd_byte_tn85>
- 860:	9f bb       	out	0x1f, r25	; 31
- 862:	8e bb       	out	0x1e, r24	; 30
- 864:	e0 9a       	sbi	0x1c, 0	; 28
- 866:	99 27       	eor	r25, r25
- 868:	8d b3       	in	r24, 0x1d	; 29
- 86a:	08 95       	ret
+0000085e <__eerd_byte_tn85>:
+ 85e:	e1 99       	sbic	0x1c, 1	; 28
+ 860:	fe cf       	rjmp	.-4      	; 0x85e <__eerd_byte_tn85>
+ 862:	9f bb       	out	0x1f, r25	; 31
+ 864:	8e bb       	out	0x1e, r24	; 30
+ 866:	e0 9a       	sbi	0x1c, 0	; 28
+ 868:	99 27       	eor	r25, r25
+ 86a:	8d b3       	in	r24, 0x1d	; 29
+ 86c:	08 95       	ret
 
-0000086c <__eewr_byte_tn85>:
- 86c:	26 2f       	mov	r18, r22
+0000086e <__eewr_byte_tn85>:
+ 86e:	26 2f       	mov	r18, r22
 
-0000086e <__eewr_r18_tn85>:
- 86e:	e1 99       	sbic	0x1c, 1	; 28
- 870:	fe cf       	rjmp	.-4      	; 0x86e <__eewr_r18_tn85>
- 872:	1c ba       	out	0x1c, r1	; 28
- 874:	9f bb       	out	0x1f, r25	; 31
- 876:	8e bb       	out	0x1e, r24	; 30
- 878:	2d bb       	out	0x1d, r18	; 29
- 87a:	0f b6       	in	r0, 0x3f	; 63
- 87c:	f8 94       	cli
- 87e:	e2 9a       	sbi	0x1c, 2	; 28
- 880:	e1 9a       	sbi	0x1c, 1	; 28
- 882:	0f be       	out	0x3f, r0	; 63
- 884:	01 96       	adiw	r24, 0x01	; 1
- 886:	08 95       	ret
+00000870 <__eewr_r18_tn85>:
+ 870:	e1 99       	sbic	0x1c, 1	; 28
+ 872:	fe cf       	rjmp	.-4      	; 0x870 <__eewr_r18_tn85>
+ 874:	1c ba       	out	0x1c, r1	; 28
+ 876:	9f bb       	out	0x1f, r25	; 31
+ 878:	8e bb       	out	0x1e, r24	; 30
+ 87a:	2d bb       	out	0x1d, r18	; 29
+ 87c:	0f b6       	in	r0, 0x3f	; 63
+ 87e:	f8 94       	cli
+ 880:	e2 9a       	sbi	0x1c, 2	; 28
+ 882:	e1 9a       	sbi	0x1c, 1	; 28
+ 884:	0f be       	out	0x3f, r0	; 63
+ 886:	01 96       	adiw	r24, 0x01	; 1
+ 888:	08 95       	ret
 
-00000888 <_exit>:
- 888:	f8 94       	cli
+0000088a <_exit>:
+ 88a:	f8 94       	cli
 
-0000088a <__stop_program>:
- 88a:	ff cf       	rjmp	.-2      	; 0x88a <__stop_program>
+0000088c <__stop_program>:
+ 88c:	ff cf       	rjmp	.-2      	; 0x88c <__stop_program>

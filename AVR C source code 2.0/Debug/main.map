@@ -210,7 +210,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x88c
+.text           0x00000000      0x88e
  *(.vectors)
  .vectors       0x00000000       0x1e d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr25/crttn85.o
                 0x00000000                __vector_default
@@ -313,29 +313,29 @@ END GROUP
                 0x000003e0       0x4e main.o
                 0x000003e0                usbFunctionSetup
  .text.usbEventResetReady
-                0x0000042e       0x98 main.o
+                0x0000042e       0x9a main.o
                 0x0000042e                usbEventResetReady
- .text.main     0x000004c6       0xca main.o
-                0x000004c6                main
+ .text.main     0x000004c8       0xca main.o
+                0x000004c8                main
  .text.usbSetInterrupt
-                0x00000590       0x44 usbdrv.o
-                0x00000590                usbSetInterrupt
- .text.usbPoll  0x000005d4      0x26e usbdrv.o
-                0x000005d4                usbPoll
- .text.usbInit  0x00000842       0x1a usbdrv.o
-                0x00000842                usbInit
+                0x00000592       0x44 usbdrv.o
+                0x00000592                usbSetInterrupt
+ .text.usbPoll  0x000005d6      0x26e usbdrv.o
+                0x000005d6                usbPoll
+ .text.usbInit  0x00000844       0x1a usbdrv.o
+                0x00000844                usbInit
  .text.avr-libc
-                0x0000085c       0x10 d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
-                0x0000085c                __eerd_byte_tn85
+                0x0000085e       0x10 d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
+                0x0000085e                __eerd_byte_tn85
  .text.avr-libc
-                0x0000086c       0x1c d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
-                0x0000086c                __eewr_byte_tn85
-                0x0000086e                __eewr_r18_tn85
-                0x00000888                . = ALIGN (0x2)
+                0x0000086e       0x1c d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+                0x0000086e                __eewr_byte_tn85
+                0x00000870                __eewr_r18_tn85
+                0x0000088a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000888        0x0 d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr25\libgcc.a(_exit.o)
-                0x00000888                _exit
-                0x00000888                exit
+ .fini9         0x0000088a        0x0 d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr25\libgcc.a(_exit.o)
+                0x0000088a                _exit
+                0x0000088a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -354,11 +354,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000888        0x4 d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr25\libgcc.a(_exit.o)
+ .fini0         0x0000088a        0x4 d:/soft/atmel studio 6.2/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000088c                _etext = .
+                0x0000088e                _etext = .
 
-.data           0x00800060        0x2 load address 0x0000088c
+.data           0x00800060        0x2 load address 0x0000088e
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -404,8 +404,8 @@ END GROUP
                 0x0080008f                usbConfiguration
                 0x00800090                usbRxBuf
                 0x008000a6                PROVIDE (__bss_end, .)
-                0x0000088c                __data_load_start = LOADADDR (.data)
-                0x0000088e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000088e                __data_load_start = LOADADDR (.data)
+                0x00000890                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008000a6        0x0
                 0x008000a6                PROVIDE (__noinit_start, .)
@@ -484,11 +484,11 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xf7a
+.debug_info     0x00000000      0xf7d
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x599 main.o
- .debug_info    0x00000599      0x974 usbdrv.o
- .debug_info    0x00000f0d       0x6d usbdrvasm.o
+ .debug_info    0x00000000      0x59c main.o
+ .debug_info    0x0000059c      0x974 usbdrv.o
+ .debug_info    0x00000f10       0x6d usbdrvasm.o
 
 .debug_abbrev   0x00000000      0x627
  *(.debug_abbrev)
@@ -514,10 +514,10 @@ END GROUP
  .debug_str     0x0000036d      0x27b usbdrv.o
                                 0x4cf (size before relaxing)
 
-.debug_loc      0x00000000      0xe23
+.debug_loc      0x00000000      0xe13
  *(.debug_loc)
- .debug_loc     0x00000000      0x274 main.o
- .debug_loc     0x00000274      0xbaf usbdrv.o
+ .debug_loc     0x00000000      0x264 main.o
+ .debug_loc     0x00000264      0xbaf usbdrv.o
 
 .debug_macinfo
  *(.debug_macinfo)

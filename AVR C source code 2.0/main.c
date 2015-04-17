@@ -7,7 +7,9 @@
  * License: Proprietary, free under certain conditions. 
 
  */
-
+#ifndef F_CPU
+#define F_CPU 12000000UL
+#endif
 // -U lfuse:w:0xE1:m -U hfuse:w:0xDD:m -U efuse:w:0xFF:m
 
 #include <avr/io.h>
