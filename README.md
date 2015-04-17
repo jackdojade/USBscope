@@ -9,3 +9,8 @@ You can find there:
 - SL 6 PCB project
 - C source code for AVR MCU
 - C# source code for desktop application
+
+---
+Now USBscope has its own [VID/PID pair](http://pid.codes/1209/EBA7/)! Thanks [Arachnid](https://github.com/Arachnid) and [http://pid.codes/](http://pid.codes/) for it :3
+
+`VID - 0x1209` `PID - 0xEBA7`
