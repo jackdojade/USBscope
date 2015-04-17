@@ -1,14 +1,14 @@
 # Name: Makefile
-# Project: EasyLogger
-# Author: Christian Starkjohann
-# Creation Date: 2007-06-23
+# Project: USBscope
+# Author: Christian Starkjohann, edited by Victor Grigoryev
+# Creation Date: 2015-04-17
 # Tabsize: 4
 # Copyright: (c) 2007 by OBJECTIVE DEVELOPMENT Software GmbH
 # License: GPLv2.
-# This Revision: $Id: Makefile 362 2007-06-25 14:38:21Z cs $
+# This Revision: $Id: Makefile 362 2015-04-17 20:25:00Z cs $
 
-DEVICE=attiny45
-AVRDUDE = avrdude -c stk500v2 -P avrdoper -p $(DEVICE)
+DEVICE = attiny85
+AVRDUDE = avrdude -c usbasp -P usb -b 19200 -p $(DEVICE)
 # The two lines above are for "avrdude" and the STK500 programmer connected
 # to an USB to serial converter to a Mac running Mac OS X.
 # Choose your favorite programmer and interface.
