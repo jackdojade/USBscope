@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PublishUrlHistory>E:\testcs\|D:\testcs\|http://localhost/UsbADC/</PublishUrlHistory>
     <InstallUrlHistory>
@@ -10,9 +9,9 @@
     </UpdateUrlHistory>
     <BootstrapperUrlHistory>
     </BootstrapperUrlHistory>
+    <ApplicationRevision>1</ApplicationRevision>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>true</VerifyUploadedFiles>
     <ProjectView>ProjectFiles</ProjectView>
-    <ErrorReportUrlHistory />
   </PropertyGroup>
 </Project>

@@ -31,11 +31,11 @@ namespace UsbScope
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(usbscope));
             this.gb_details = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.usb = new UsbLibrary.UsbHidPort(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -61,31 +61,25 @@ namespace UsbScope
             // gb_details
             // 
             this.gb_details.BackColor = System.Drawing.Color.SteelBlue;
+            this.gb_details.Controls.Add(this.label4);
+            this.gb_details.Controls.Add(this.label3);
+            this.gb_details.Controls.Add(this.label2);
+            this.gb_details.Controls.Add(this.label1);
             this.gb_details.Controls.Add(this.pictureBox1);
             this.gb_details.ForeColor = System.Drawing.Color.White;
             this.gb_details.Location = new System.Drawing.Point(7, 112);
             this.gb_details.Name = "gb_details";
-            this.gb_details.Size = new System.Drawing.Size(765, 425);
+            this.gb_details.Size = new System.Drawing.Size(260, 328);
             this.gb_details.TabIndex = 6;
             this.gb_details.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(753, 400);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(714, 25);
+            this.label4.ForeColor = System.Drawing.Color.Aqua;
+            this.label4.Location = new System.Drawing.Point(220, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 25);
             this.label4.TabIndex = 13;
@@ -96,8 +90,8 @@ namespace UsbScope
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(510, 18);
+            this.label3.ForeColor = System.Drawing.Color.Aqua;
+            this.label3.Location = new System.Drawing.Point(16, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(229, 75);
             this.label3.TabIndex = 12;
@@ -110,7 +104,7 @@ namespace UsbScope
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(454, 25);
+            this.label2.Location = new System.Drawing.Point(220, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 25);
             this.label2.TabIndex = 11;
@@ -122,30 +116,40 @@ namespace UsbScope
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(249, 17);
+            this.label1.Location = new System.Drawing.Point(15, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(229, 76);
             this.label1.TabIndex = 10;
             this.label1.Text = "0";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 161);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(247, 157);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // usb
             // 
             this.usb.ProductId = 0;
             this.usb.VendorId = 0;
-            this.usb.OnSpecifiedDeviceArrived += new System.EventHandler(this.usb_OnSpecifiedDeviceArrived);
             this.usb.OnSpecifiedDeviceRemoved += new System.EventHandler(this.usb_OnSpecifiedDeviceRemoved);
             this.usb.OnDeviceArrived += new System.EventHandler(this.usb_OnDeviceArrived);
             this.usb.OnDeviceRemoved += new System.EventHandler(this.usb_OnDeviceRemoved);
             this.usb.OnDataRecieved += new UsbLibrary.DataRecievedEventHandler(this.usb_OnDataRecieved);
+            this.usb.OnSpecifiedDeviceArrived += new System.EventHandler(this.usb_OnSpecifiedDeviceArrived);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 444);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(272, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -153,18 +157,14 @@ namespace UsbScope
             // 
             this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(70, 17);
-            this.toolStripStatusLabel1.Text = "Ready to go";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(35, 17);
+            this.toolStripStatusLabel1.Text = "ready";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.trackBar1);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.button1);
@@ -174,7 +174,7 @@ namespace UsbScope
             this.groupBox1.Controls.Add(this.label_min1);
             this.groupBox1.Location = new System.Drawing.Point(7, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(765, 108);
+            this.groupBox1.Size = new System.Drawing.Size(259, 108);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -217,7 +217,7 @@ namespace UsbScope
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBar1.Size = new System.Drawing.Size(183, 45);
+            this.trackBar1.Size = new System.Drawing.Size(109, 45);
             this.trackBar1.SmallChange = 2;
             this.trackBar1.TabIndex = 19;
             this.trackBar1.TickFrequency = 2;
@@ -240,7 +240,7 @@ namespace UsbScope
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(53, 39);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Reset";
+            this.button1.Text = "RAZ";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -249,7 +249,7 @@ namespace UsbScope
             this.label_max2.AutoSize = true;
             this.label_max2.BackColor = System.Drawing.Color.Transparent;
             this.label_max2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_max2.ForeColor = System.Drawing.Color.White;
+            this.label_max2.ForeColor = System.Drawing.Color.Aqua;
             this.label_max2.Location = new System.Drawing.Point(195, 40);
             this.label_max2.Name = "label_max2";
             this.label_max2.Size = new System.Drawing.Size(20, 24);
@@ -262,7 +262,7 @@ namespace UsbScope
             this.label_min2.AutoSize = true;
             this.label_min2.BackColor = System.Drawing.Color.Transparent;
             this.label_min2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_min2.ForeColor = System.Drawing.Color.White;
+            this.label_min2.ForeColor = System.Drawing.Color.Aqua;
             this.label_min2.Location = new System.Drawing.Point(126, 40);
             this.label_min2.Name = "label_min2";
             this.label_min2.Size = new System.Drawing.Size(20, 24);
@@ -306,7 +306,7 @@ namespace UsbScope
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(272, 466);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gb_details);
@@ -315,9 +315,9 @@ namespace UsbScope
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "usbscope";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "2-channel USBscope";
+            this.Text = "Usb data capture";
             this.gb_details.ResumeLayout(false);
+            this.gb_details.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

@@ -3,13 +3,7 @@
    You need UsbLibrary.dll in the app path.
  
    Copyright Jacques Lepot 2008-2009
- */
 
-/* Project has been recompiled using MS Vicual Studio 2012. Don`t sure about its compability.
- * You can use ATtiny45/85 MCU. And you still need UsbLibrary.dll for work.
-   Exetutable file is looking for my own valid PID/VID pair now, tou can find if below. 
-   
-   Copyright Victor Grigoryev 2015
  */
 using System;
 using System.ComponentModel;
@@ -22,7 +16,7 @@ namespace UsbScope
     public partial class usbscope : Form
     {
 
-        int ti = 0;                   
+        int ti=0;                   
         int smplcnt = 0;
         float old_gval1 = 0;
         float old_gval2 = 0;
@@ -44,9 +38,9 @@ namespace UsbScope
         public usbscope()
         {
             InitializeComponent();
-            // http://pid.codes/1209/EBA7/ - my own valid VID/PID pair
-            this.usb.ProductId = 0xEBA7;
-            this.usb.VendorId = 0x1209;
+            // Change Pid and Vid if needed
+            this.usb.ProductId = 0x0002;
+            this.usb.VendorId = 0x4242;
             g = pictureBox1.CreateGraphics();
         }
 
@@ -63,13 +57,13 @@ namespace UsbScope
             }
             else
             {
-                toolStripStatusLabel1.Text = "HID device removed";
+                toolStripStatusLabel1.Text = "Device removed";
             }
         }
 
         private void usb_OnSpecifiedDeviceArrived(object sender, EventArgs e)
         {
-            toolStripStatusLabel1.Text = "USBscope found";
+            toolStripStatusLabel1.Text = "Found my HID Device";
         }
 
         private void usb_OnSpecifiedDeviceRemoved(object sender, EventArgs e)
@@ -80,7 +74,7 @@ namespace UsbScope
             }
             else
             {
-                toolStripStatusLabel1.Text = "USBscope removed";
+                toolStripStatusLabel1.Text = "my Device removed";
             }
         }
 
@@ -119,18 +113,15 @@ namespace UsbScope
                     smplcnt++;
  
                     if (checkBox2.Checked)
-                    // Low-pass filter activation
+                    // filtrage moyenne mobile
                     {
                         valbuf1[bufptr] = captureval1;
                         valbuf2[bufptr] = captureval2;
-                        bufptr++; 
-                        if (bufptr > maxbuf) bufptr = 0;
+                        bufptr++; if (bufptr > maxbuf) bufptr = 0;
 
                         float filtered1 = 0f;
                         float filtered2 = 0f;
-                        for (int i = 0; i < maxbuf; i++) { 
-                            filtered1 += valbuf1[i]; filtered2 += valbuf2[i]; 
-                        }
+                        for (int i = 0; i < maxbuf; i++) { filtered1 += valbuf1[i]; filtered2 += valbuf2[i]; }
                         captureval1 = (int)(filtered1 / maxbuf);
                         captureval2 = (int)(filtered2 / maxbuf);
                     }
@@ -149,14 +140,14 @@ namespace UsbScope
             if (captureval2 > max2) { max2 = captureval2; label_max2.Text = max2.ToString(); }
             if (captureval2 < min2) { min2 = captureval2; label_min2.Text = min2.ToString(); } 
 
-        // LCD updates 2 time per second only
+        // l'affichage numérique n'est mis a jour que 2 fois par seconde
                 if (!timer1.Enabled)
                 {
                     label1.Text = captureval1.ToString().Trim();
                     label3.Text = captureval2.ToString().Trim();
                     timer1.Enabled = true;
                 }
-        // graphic
+        // graphique
                 if ((smplcnt % trackBar1.Value == 0) )
                 {
                     float gval1 = captureval1 / 2600.0f;
@@ -173,10 +164,7 @@ namespace UsbScope
                     old_gval1 = gval1;
                     old_gval2 = gval2;
                     ti++;
-                    if (ti > pictureBox1.Width) { 
-                        ti = 0; 
-                        g.DrawLine(System.Drawing.Pens.Black, 0, 0, 0, pictureBox1.Height); 
-                    }
+                    if (ti > pictureBox1.Width) { ti = 0; g.DrawLine(System.Drawing.Pens.Black, 0, 0, 0, pictureBox1.Height); }
                 }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -197,9 +185,10 @@ namespace UsbScope
 
         private void button2_Click(object sender, EventArgs e)
         {
-            paused = !paused; 
-            if (paused) button2.Text = "RUN"; 
-            else button2.Text = "STOP";
+            paused = !paused; if (paused) button2.Text = "RUN"; else button2.Text = "STOP";
         }
+
+        
+  
     }
 }

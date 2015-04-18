@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("USBscope")]
-[assembly: AssemblyDescription("2-channel USBscope")]
+[assembly: AssemblyTitle("UsbADC")]
+[assembly: AssemblyDescription("Usb 2 analog capture")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Victor Grigoryev")]
-[assembly: AssemblyProduct("USBscope")]
-[assembly: AssemblyCopyright("Copyright © Victor Grigoryev* 2015")]
-[assembly: AssemblyTrademark("VGM Electronics")]
+[assembly: AssemblyCompany("Jacques Lepot")]
+[assembly: AssemblyProduct("UsbADC")]
+[assembly: AssemblyCopyright("Copyright © Jacques Lepot* 2008")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]
