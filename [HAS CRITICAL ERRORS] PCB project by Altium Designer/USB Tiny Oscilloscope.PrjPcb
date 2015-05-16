@@ -28,7 +28,7 @@ PowerPortNamesTakePriority=0
 PushECOToAnnotationFile=1
 DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
-OutputPath=Project Outputs for USB Tiny Oscilloscope
+OutputPath=
 LogFolderPath=
 ManagedProjectGUID=
 
@@ -98,7 +98,7 @@ GenerateBOM=1
 OutputJobsCount=0
 
 [Generic_EDE]
-OutputDir=Project Outputs for USB Tiny Oscilloscope
+OutputDir=
 
 [OutputGroup1]
 Name=Netlist Outputs
