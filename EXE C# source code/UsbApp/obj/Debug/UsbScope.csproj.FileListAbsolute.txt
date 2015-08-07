@@ -19,3 +19,15 @@ G:\EXE C# source code\UsbApp\obj\Debug\UsbScope.csprojResolveAssemblyReference.c
 G:\EXE C# source code\UsbApp\obj\Debug\UsbScope.Properties.Resources.resources
 G:\EXE C# source code\UsbApp\obj\Debug\UsbScope.usbscope.resources
 G:\EXE C# source code\UsbApp\obj\Debug\UsbScope.csproj.GenerateResource.Cache
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\obj\Debug\USBscope.exe
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\obj\Debug\USBscope.pdb
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\bin\Debug\USBscope.exe.config
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\bin\Debug\USBscope.exe
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\bin\Debug\USBscope.pdb
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\bin\Debug\UsbLibrary.dll
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\bin\Debug\UsbLibrary.pdb
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\bin\Debug\UsbLibrary.xml
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\obj\Debug\UsbScope.Properties.Resources.resources
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\obj\Debug\UsbScope.usbscope.resources
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\obj\Debug\UsbScope.csproj.GenerateResource.Cache
+D:\work\2-channel USBscope\EXE C# source code\UsbApp\obj\Debug\UsbScope.csprojResolveAssemblyReference.cache

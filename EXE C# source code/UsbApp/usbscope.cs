@@ -30,7 +30,7 @@ namespace UsbScope
         float[] valbuf1 = new float[128];
         float[] valbuf2 = new float[128];
         int bufptr = 0;
-        int maxbuf = 20;
+        int maxbuf = 10;
 
         int min1= 9999;
         int max1 = -1;

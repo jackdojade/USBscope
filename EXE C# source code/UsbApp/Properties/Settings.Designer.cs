@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UsbScope.Properties {
+namespace USBscope.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
